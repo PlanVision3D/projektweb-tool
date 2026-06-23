@@ -16,5 +16,5 @@ export default async function KundeEditor({ params }: { params: { id: string } }
       <main className="wrap"><div className="card empty"><h2>Kein Zugriff</h2><p className="muted">Dieses Projekt ist Ihrem Konto nicht zugewiesen.</p><a className="btn btn-primary" href="/kunde">Zurück</a></div></main>
     );
   }
-  return <AdminEditor project={project} canDelete={false} backHref="/kunde" leadsHref={`/kunde/projekte/${project.id}/leads`} />;
+  return <AdminEditor project={project} canDelete={false} canExport={false} backHref="/kunde" leadsHref={`/kunde/projekte/${project.id}/leads`} />;
 }

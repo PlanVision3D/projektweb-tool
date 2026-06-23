@@ -13,7 +13,7 @@ const STATUS_OPTIONS = [
   { value: "verkauft", label: "Verkauft" },
 ];
 
-export default function AdminEditor({ project, canDelete = true, backHref = "/", leadsHref }: { project: Project; canDelete?: boolean; backHref?: string; leadsHref?: string }) {
+export default function AdminEditor({ project, canDelete = true, canExport = true, backHref = "/", leadsHref }: { project: Project; canDelete?: boolean; canExport?: boolean; backHref?: string; leadsHref?: string }) {
   const leadsLink = leadsHref ?? `/projects/${project.id}/leads`;
   const [draft, setDraft] = useState<ProjectContent>(project.draft);
   const [name, setName] = useState(project.name);
@@ -26,6 +26,10 @@ export default function AdminEditor({ project, canDelete = true, backHref = "/",
   const [panelW, setPanelW] = useState(520);
   const [resizing, setResizing] = useState(false);
   const asideRef = useRef<HTMLElement>(null);
+  const [exportOpen, setExportOpen] = useState(false);
+  const [exportHtml, setExportHtml] = useState("");
+  const [exportBusy, setExportBusy] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   // Linke Editor-Leiste flüssig per Ziehen verbreitern (kein Rerender pro Pixel,
   // Overlay verhindert, dass das Vorschau-iframe die Maus abfängt).
@@ -78,6 +82,46 @@ export default function AdminEditor({ project, canDelete = true, backHref = "/",
     else flash("Fehler beim Löschen.");
   }
 
+  async function openExport() {
+    setExportOpen(true);
+    setExportBusy(true);
+    setCopied(false);
+    setExportHtml("");
+    try {
+      const res = await fetch(`/api/projects/${project.id}/export`, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: draft }),
+      });
+      const text = await res.text();
+      if (!res.ok) throw new Error(text || "Export fehlgeschlagen.");
+      setExportHtml(text);
+    } catch (err: any) {
+      setExportHtml("");
+      flash(err.message || "Export fehlgeschlagen.");
+    } finally {
+      setExportBusy(false);
+    }
+  }
+
+  async function copyExport() {
+    try {
+      await navigator.clipboard.writeText(exportHtml);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2200);
+    } catch {
+      flash("Kopieren nicht möglich – bitte manuell markieren.");
+    }
+  }
+
+  function downloadExport() {
+    const blob = new Blob([exportHtml], { type: "text/html;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `${project.slug || "projekt"}.html`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
   async function publish() {
     setPublishing(true);
     await fetch(`/api/projects/${project.id}`, {
@@ -100,6 +144,7 @@ export default function AdminEditor({ project, canDelete = true, backHref = "/",
           <strong style={{ fontFamily: "Poppins", fontSize: ".95rem" }}>{name}</strong>
           {published ? <span className="pill pill-live">Live</span> : <span className="pill pill-draft">Entwurf</span>}
           <Link href={leadsLink} style={{ marginLeft: "auto", color: "#c7d0de", textDecoration: "none", fontSize: ".85rem" }}>📥 Leads</Link>
+          {canExport && <button onClick={openExport} title="Als HTML für WordPress / Elementor exportieren" style={{ background: "transparent", border: "1px solid #3a5a6b", color: "#9ad0e0", borderRadius: 6, padding: ".25rem .6rem", cursor: "pointer", fontSize: ".8rem" }}>⤓ Export</button>}
           {canDelete && <button onClick={removeProject} title="Projekt löschen" style={{ background: "transparent", border: "1px solid #6b3a3a", color: "#ff9a9a", borderRadius: 6, padding: ".25rem .6rem", cursor: "pointer", fontSize: ".8rem" }}>Löschen</button>}
         </div>
 
@@ -342,6 +387,38 @@ export default function AdminEditor({ project, canDelete = true, backHref = "/",
         </div>
         <iframe key={previewKey} src={`/preview/${project.id}?v=${previewKey}`} style={{ flex: 1, border: "none", width: "100%" }} title="Vorschau" />
       </main>
+
+      {exportOpen && (
+        <div className="modal-backdrop" onClick={() => setExportOpen(false)}>
+          <div className="modal" onClick={(e) => e.stopPropagation()} style={{ width: "min(720px, 94vw)" }}>
+            <h3 style={{ marginTop: 0, fontFamily: "Poppins" }}>Webseite exportieren (HTML)</h3>
+            <p className="muted" style={{ marginTop: 4 }}>
+              Eigenständiger HTML-Code des aktuellen Entwurfs – zum Einfügen in einen WordPress „Custom HTML"-Block oder ein Elementor „HTML"-Widget. Bilder & Formular verweisen absolut auf diese Anwendung.
+            </p>
+            <ol className="muted" style={{ fontSize: ".84rem", margin: "10px 0 14px", paddingLeft: 18, lineHeight: 1.6 }}>
+              <li>In Elementor: Widget <strong>„HTML"</strong> einfügen (oder WordPress-Block <strong>„Custom HTML"</strong>).</li>
+              <li>Code unten <strong>kopieren</strong> und dort einfügen – fertig.</li>
+              <li>Tipp: am besten in einen leeren, vollbreiten Abschnitt (full-width, ohne Innenabstand) setzen.</li>
+            </ol>
+
+            <textarea
+              readOnly
+              value={exportBusy ? "Wird erzeugt…" : exportHtml}
+              onFocus={(e) => e.currentTarget.select()}
+              style={{ width: "100%", height: 220, fontFamily: "monospace", fontSize: ".78rem", whiteSpace: "pre", overflow: "auto" }}
+            />
+
+            <div style={{ display: "flex", gap: 8, marginTop: 14, alignItems: "center", flexWrap: "wrap" }}>
+              <button className="btn btn-primary" onClick={copyExport} disabled={exportBusy || !exportHtml}>{copied ? "✓ Kopiert" : "Code kopieren"}</button>
+              <button className="btn btn-ghost" onClick={downloadExport} disabled={exportBusy || !exportHtml}>Als .html herunterladen</button>
+              <button className="btn btn-ghost" style={{ marginLeft: "auto" }} onClick={() => setExportOpen(false)}>Schließen</button>
+            </div>
+            {!published && !exportBusy && (
+              <p className="muted" style={{ fontSize: ".8rem", marginTop: 10 }}>Hinweis: Exportiert wird der aktuelle Entwurf (auch ungespeicherte Änderungen im Editor).</p>
+            )}
+          </div>
+        </div>
+      )}
 
       {toast && (
         <div style={{ position: "fixed", bottom: 20, left: "50%", transform: "translateX(-50%)", background: "var(--tool-bg)", color: "#fff", padding: "10px 18px", borderRadius: 8, fontSize: ".9rem", boxShadow: "0 8px 24px rgba(0,0,0,.25)", zIndex: 50 }}>{toast}</div>

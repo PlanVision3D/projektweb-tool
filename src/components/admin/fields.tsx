@@ -1,5 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
+
+const IMG_EXT = [".png", ".jpg", ".jpeg", ".svg", ".webp", ".gif"];
 
 export function Text({ label, value, onChange, placeholder, type = "text" }: {
   label: string; value: string; onChange: (v: string) => void; placeholder?: string; type?: string;
@@ -69,7 +71,17 @@ export function ImageField({ label, url, projectId, onChange }: {
   label: string; url?: string; projectId: string; onChange: (url: string) => void;
 }) {
   const [busy, setBusy] = useState(false);
+  const [dragging, setDragging] = useState(false);
+  const [error, setError] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+
   async function upload(file: File) {
+    const ok = IMG_EXT.some((ext) => file.name.toLowerCase().endsWith(ext));
+    if (!ok) {
+      setError("Bitte ein Bild (PNG, JPG, SVG oder WebP) auswählen. PDF wird nicht unterstützt.");
+      return;
+    }
+    setError("");
     setBusy(true);
     const fd = new FormData();
     fd.append("file", file);
@@ -77,17 +89,61 @@ export function ImageField({ label, url, projectId, onChange }: {
     const data = await res.json();
     setBusy(false);
     if (data.url) onChange(data.url);
+    else setError(data.error || "Upload fehlgeschlagen.");
   }
+
+  function onDrop(e: React.DragEvent) {
+    e.preventDefault();
+    setDragging(false);
+    const f = e.dataTransfer.files?.[0];
+    if (f) upload(f);
+  }
+
   return (
-    <label className="field">
+    <div className="field">
       <span>{label}</span>
-      <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+      <div style={{ display: "flex", gap: 12, alignItems: "stretch" }}>
         {url ? <img src={url} alt="" style={{ width: 90, height: 60, objectFit: "cover", borderRadius: 6, border: "1px solid var(--tool-line)" }} />
              : <div style={{ width: 90, height: 60, borderRadius: 6, background: "#eef1f6", display: "grid", placeItems: "center", color: "#9aa3b2", fontSize: ".7rem" }}>kein Bild</div>}
-        <input type="file" accept="image/*" disabled={busy} onChange={(e) => e.target.files?.[0] && upload(e.target.files[0])} />
-        {busy && <span className="muted">lädt…</span>}
+        <div
+          role="button"
+          tabIndex={0}
+          onClick={() => !busy && inputRef.current?.click()}
+          onKeyDown={(e) => { if (!busy && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); inputRef.current?.click(); } }}
+          onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
+          onDragLeave={(e) => { e.preventDefault(); setDragging(false); }}
+          onDrop={onDrop}
+          style={{
+            flex: 1, display: "grid", placeItems: "center", textAlign: "center",
+            border: `2px dashed ${dragging ? "var(--tool-accent)" : "var(--tool-line)"}`,
+            borderRadius: 8, padding: "10px 12px", cursor: busy ? "default" : "pointer",
+            background: dragging ? "var(--tool-soft)" : "#fff", transition: ".15s", fontSize: ".82rem",
+          }}
+        >
+          {busy ? <span className="muted">lädt…</span>
+                : <span>Bild hierher ziehen oder <strong>klicken</strong><br /><span className="muted">PNG, JPG, SVG, WebP</span></span>}
+        </div>
+        {url && !busy && (
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={() => { onChange(""); setError(""); }}
+            style={{ padding: ".35rem .7rem", fontSize: ".8rem", alignSelf: "center" }}
+          >
+            Entfernen
+          </button>
+        )}
+        <input
+          ref={inputRef}
+          type="file"
+          accept="image/png,image/jpeg,image/svg+xml,image/webp,image/gif"
+          style={{ display: "none" }}
+          disabled={busy}
+          onChange={(e) => { if (e.target.files?.[0]) upload(e.target.files[0]); e.target.value = ""; }}
+        />
       </div>
-    </label>
+      {error && <span style={{ color: "#c62828", fontSize: ".8rem", display: "block", marginTop: 6 }}>{error}</span>}
+    </div>
   );
 }
 

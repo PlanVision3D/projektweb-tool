@@ -1,7 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import TopBar from "@/components/TopBar";
+
+const ACCEPTED = [".xlsx", ".xls", ".csv"];
 
 export default function NewProject() {
   const router = useRouter();
@@ -9,6 +11,25 @@ export default function NewProject() {
   const [file, setFile] = useState<File | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [dragging, setDragging] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  function pickFile(f: File | null) {
+    if (!f) return;
+    const ok = ACCEPTED.some((ext) => f.name.toLowerCase().endsWith(ext));
+    if (!ok) {
+      setError("Bitte eine .xlsx-, .xls- oder .csv-Datei auswählen.");
+      return;
+    }
+    setError("");
+    setFile(f);
+  }
+
+  function onDrop(e: React.DragEvent) {
+    e.preventDefault();
+    setDragging(false);
+    pickFile(e.dataTransfer.files?.[0] ?? null);
+  }
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -39,11 +60,46 @@ export default function NewProject() {
             <span>Projektname *</span>
             <input type="text" required value={name} onChange={(e) => setName(e.target.value)} placeholder="z. B. Wohnen in der Südstadt" />
           </label>
-          <label className="field">
+          <div className="field">
             <span>Projektdaten-Datei (.xlsx / .csv)</span>
-            <input type="file" accept=".xlsx,.xls,.csv" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
-            <span className="muted" style={{ fontWeight: 400, marginTop: 6 }}>Optional – du kannst die Datei auch später im Admin importieren.</span>
-          </label>
+            <div
+              className="dropzone"
+              role="button"
+              tabIndex={0}
+              onClick={() => inputRef.current?.click()}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); inputRef.current?.click(); } }}
+              onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
+              onDragLeave={(e) => { e.preventDefault(); setDragging(false); }}
+              onDrop={onDrop}
+              style={{
+                cursor: "pointer",
+                padding: 28,
+                borderColor: dragging ? "var(--tool-accent)" : "var(--tool-line)",
+                background: dragging ? "var(--tool-soft)" : "#fff",
+                transition: ".15s",
+              }}
+            >
+              {file ? (
+                <div>
+                  <strong>{file.name}</strong>
+                  <div className="muted" style={{ marginTop: 4 }}>{(file.size / 1024).toFixed(0)} KB · zum Ersetzen klicken oder neue Datei ablegen</div>
+                </div>
+              ) : (
+                <div>
+                  <div style={{ fontWeight: 600 }}>Datei hierher ziehen oder klicken zum Auswählen</div>
+                  <div className="muted" style={{ marginTop: 4 }}>.xlsx, .xls oder .csv</div>
+                </div>
+              )}
+            </div>
+            <input
+              ref={inputRef}
+              type="file"
+              accept=".xlsx,.xls,.csv"
+              style={{ display: "none" }}
+              onChange={(e) => pickFile(e.target.files?.[0] ?? null)}
+            />
+            <span className="muted" style={{ fontWeight: 400, display: "block", marginTop: 6 }}>Optional – du kannst die Datei auch später im Admin importieren.</span>
+          </div>
           {error && <p style={{ color: "#c62828" }}>{error}</p>}
           <button className="btn btn-primary" disabled={busy || !name}>{busy ? "Wird angelegt…" : "Projekt anlegen & importieren"}</button>
         </form>
