@@ -12,7 +12,7 @@ export default function TopBar() {
 
   return (
     <header className="topbar">
-      <Link href="/" className="brand" style={{ color: "#fff", textDecoration: "none" }}>
+      <Link href="/" className="brand" style={{ textDecoration: "none" }}>
         Projektweb<span>·Tool</span>
       </Link>
       <nav>
@@ -23,9 +23,9 @@ export default function TopBar() {
         <button
           onClick={logout}
           style={{
-            background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)",
-            color: "white", padding: "6px 14px", borderRadius: 6, cursor: "pointer",
-            fontSize: 13, fontWeight: 500,
+            marginLeft: 6, background: "var(--card)", border: "1px solid var(--border)",
+            color: "var(--muted-foreground)", padding: "7px 14px", borderRadius: 8, cursor: "pointer",
+            fontSize: 13, fontWeight: 600, fontFamily: "Poppins", transition: ".15s",
           }}
         >
           Abmelden

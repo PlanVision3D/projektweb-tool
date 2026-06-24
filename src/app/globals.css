@@ -1,83 +1,167 @@
+/* =========================================================================
+   PROJEKTWEB-TOOL · Admin-Design (warmes "Claude"-Farbsystem)
+   Exakte oklch-Tokens aus dem Referenz-Theme. Nur fürs Tool – die
+   Projektseiten-Templates nutzen eigene CSS-Module und bleiben unberührt.
+   ========================================================================= */
+
 :root {
-  --tool-bg: #0f1729;
-  --tool-panel: #ffffff;
-  --tool-ink: #1f2937;
-  --tool-muted: #6b7280;
-  --tool-line: #e5e7eb;
-  --tool-accent: #486289;
-  --tool-accent-2: #ceb475;
-  --tool-soft: #f3f5f9;
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  /* --- Referenz-Theme-Tokens (warm, hell) --- */
+  --background: oklch(0.9818 0.0054 95.0986);
+  --foreground: oklch(0.3438 0.0269 95.7226);
+  --card: oklch(1.0000 0 0);
+  --card-foreground: oklch(0.1908 0.0020 106.5859);
+  --popover: oklch(1.0000 0 0);
+  --primary: oklch(0.6419 0.1926 37.4037);
+  --primary-foreground: oklch(1.0000 0 0);
+  --secondary: oklch(0.9245 0.0138 92.9892);
+  --secondary-foreground: oklch(0.4334 0.0177 98.6048);
+  --muted: oklch(0.9341 0.0153 90.2390);
+  --muted-foreground: oklch(0.6059 0.0075 97.4233);
+  --accent: oklch(0.9245 0.0138 92.9892);
+  --accent-foreground: oklch(0.2671 0.0196 98.9390);
+  --destructive: oklch(0.6368 0.2078 25.3313);
+  --destructive-foreground: oklch(1.0000 0 0);
+  --border: oklch(0.8847 0.0069 97.3627);
+  --input: oklch(0.7621 0.0156 98.3528);
+  --ring: oklch(0.6171 0.1375 39.0427);
+  --sidebar: oklch(0.9663 0.0080 98.8792);
+
+  --radius: 0.5rem;
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+  --shadow-lg: 0 4px 6px -1px hsl(0 0% 0% / 0.10), 0 2px 4px -2px hsl(0 0% 0% / 0.10);
+  --shadow-xl: 0 10px 20px -3px hsl(0 0% 0% / 0.12), 0 4px 6px -4px hsl(0 0% 0% / 0.10);
+  --shadow-2xl: 0 24px 50px -12px hsl(28 40% 20% / 0.28);
+
+  /* --- Kompatibilitäts-Aliasse (von bestehenden Komponenten genutzt) --- */
+  --tool-bg: var(--sidebar);
+  --tool-panel: var(--card);
+  --tool-ink: var(--foreground);
+  --tool-muted: var(--muted-foreground);
+  --tool-line: var(--border);
+  --tool-accent: var(--primary);
+  --tool-accent-2: oklch(0.7332 0.0876 78.0); /* warmes Gold */
+  --tool-soft: var(--secondary);
+
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
+
 * { box-sizing: border-box; }
 html, body { margin: 0; overflow-x: hidden; }
-body { color: var(--tool-ink); background: var(--tool-soft); }
+body {
+  color: var(--foreground);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+}
 
-/* Dezente, helle Scrollbar (Corporate, aber leicht) */
-* { scrollbar-width: thin; scrollbar-color: #b8c4d6 transparent; }
+/* Warme, dezente Scrollbar */
+* { scrollbar-width: thin; scrollbar-color: oklch(0.84 0.02 90) transparent; }
 *::-webkit-scrollbar { width: 11px; height: 11px; }
 *::-webkit-scrollbar-track { background: transparent; }
-*::-webkit-scrollbar-thumb { background: #c3cedd; border-radius: 10px; border: 3px solid transparent; background-clip: content-box; }
-*::-webkit-scrollbar-thumb:hover { background: #9fb0c7; background-clip: content-box; }
-a { color: var(--tool-accent); }
-h1, h2, h3 { font-family: "Poppins", sans-serif; }
+*::-webkit-scrollbar-thumb { background: oklch(0.86 0.018 90); border-radius: 10px; border: 3px solid transparent; background-clip: content-box; }
+*::-webkit-scrollbar-thumb:hover { background: oklch(0.78 0.03 75); background-clip: content-box; }
 
-.topbar { background: var(--tool-bg); color: #fff; padding: 0 24px; height: 60px; display: flex; align-items: center; gap: 16px; }
-.topbar .brand { font-family: "Poppins"; font-weight: 700; font-size: 1.05rem; }
-.topbar .brand span { color: var(--tool-accent-2); }
-.topbar nav { margin-left: auto; display: flex; gap: 18px; font-size: .9rem; }
-.topbar nav a { color: #c7d0de; text-decoration: none; }
-.topbar nav a:hover { color: #fff; }
+a { color: var(--primary); }
+h1, h2, h3 { font-family: "Poppins", ui-sans-serif, sans-serif; letter-spacing: -0.01em; color: var(--foreground); }
 
-.wrap { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
-.btn { display: inline-flex; align-items: center; gap: 6px; font-family: "Poppins"; font-weight: 600; border: none; border-radius: 8px; padding: .6rem 1.1rem; cursor: pointer; font-size: .92rem; text-decoration: none; }
-.btn-primary { background: var(--tool-accent); color: #fff; }
-.btn-primary:hover { background: #3a4f6f; }
-.btn-gold { background: var(--tool-accent-2); color: #3a3320; }
-.btn-ghost { background: #fff; color: var(--tool-ink); border: 1px solid var(--tool-line); }
-.btn-danger { background: #fff; color: #c62828; border: 1px solid #f0caca; }
-.btn:disabled { opacity: .5; cursor: not-allowed; }
-
-.card { background: var(--tool-panel); border: 1px solid var(--tool-line); border-radius: 12px; padding: 20px; }
-.grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
-.project-card { display: block; text-decoration: none; color: inherit; transition: .15s; }
-.project-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(15,23,41,.1); }
-.project-card .thumb { height: 140px; border-radius: 8px; background-size: cover; background-position: center; background-color: #d7dde7; margin-bottom: 12px; }
-.muted { color: var(--tool-muted); font-size: .88rem; }
-.pill { display: inline-block; font-size: .72rem; font-weight: 600; padding: .2rem .6rem; border-radius: 50px; }
-.pill-live { background: #e8f5e9; color: #2e7d32; }
-.pill-draft { background: #fff4e5; color: #b26a00; }
-
-.empty { text-align: center; padding: 60px 20px; }
-
-.card-menu-btn { position: absolute; top: 10px; right: 10px; z-index: 2; width: 34px; height: 34px; border-radius: 8px; border: none; background: rgba(255,255,255,.9); color: var(--tool-ink); font-size: 1.3rem; line-height: 1; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
-.card-menu-btn:hover { background: #fff; }
-.card-menu { position: absolute; top: 48px; right: 10px; z-index: 5; background: #fff; border: 1px solid var(--tool-line); border-radius: 10px; box-shadow: 0 12px 30px rgba(15,23,41,.18); padding: 6px; min-width: 220px; display: flex; flex-direction: column; }
-.card-menu button, .card-menu a { display: block; width: 100%; text-align: left; background: none; border: none; padding: .55rem .7rem; border-radius: 7px; font-size: .9rem; cursor: pointer; color: var(--tool-ink); text-decoration: none; }
-.card-menu button:hover, .card-menu a:hover { background: var(--tool-soft); }
-.card-menu .danger { color: #c62828; }
-.card-menu .danger:hover { background: #fdeaea; }
-
-.lead-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; }
-.lead-table th { background: var(--tool-bg); color: #fff; text-align: left; padding: .7rem .9rem; font-size: .82rem; }
-.lead-table td { padding: .7rem .9rem; border-bottom: 1px solid var(--tool-line); font-size: .9rem; vertical-align: top; }
-.lead-status { font-size: .82rem; padding: .25rem .5rem; border-radius: 6px; border: 1px solid var(--tool-line); }
-
-.chip { display: inline-flex; align-items: center; gap: 4px; background: #eaf0f7; color: var(--tool-accent); border-radius: 50px; padding: .18rem .6rem; font-size: .75rem; font-weight: 600; }
-.modal-backdrop { position: fixed; inset: 0; background: rgba(15,23,41,.5); display: grid; place-items: center; z-index: 100; }
-.modal { background: #fff; border-radius: 14px; padding: 24px; width: min(460px, 92vw); box-shadow: 0 24px 60px rgba(0,0,0,.3); }
-.cust-row { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border: 1px solid var(--tool-line); border-radius: 10px; cursor: pointer; }
-.cust-row:hover { background: var(--tool-soft); }
-.cust-row input { margin-top: 3px; }
-
-label.field { display: block; margin-bottom: 14px; }
-label.field > span { display: block; font-weight: 600; font-size: .82rem; margin-bottom: 5px; font-family: "Poppins"; }
-input[type=text], input[type=email], input[type=tel], input[type=url], input[type=color], select, textarea {
-  width: 100%; font-family: inherit; font-size: .92rem; padding: .55rem .7rem; border: 1px solid var(--tool-line); border-radius: 8px; background: #fff;
+/* ---------------------------------- Topbar ---------------------------------- */
+.topbar {
+  background: color-mix(in oklch, var(--card) 80%, transparent);
+  backdrop-filter: saturate(180%) blur(8px);
+  color: var(--foreground);
+  padding: 0 28px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
-textarea { min-height: 90px; resize: vertical; }
-.dropzone { border: 2px dashed var(--tool-line); border-radius: 12px; padding: 40px; text-align: center; background: #fff; }
+.topbar .brand { font-family: "Poppins"; font-weight: 700; font-size: 1.1rem; color: var(--foreground); display: inline-flex; align-items: center; gap: 2px; }
+.topbar .brand span { color: var(--primary); }
+.topbar nav { margin-left: auto; display: flex; align-items: center; gap: 6px; font-size: .9rem; }
+.topbar nav a { color: var(--muted-foreground); text-decoration: none; padding: 7px 12px; border-radius: 8px; transition: .15s; font-weight: 500; }
+.topbar nav a:hover { color: var(--foreground); background: var(--secondary); }
 
-.warn-box { background: #fff8ec; border: 1px solid #f3d9a6; border-radius: 10px; padding: 14px 16px; margin-bottom: 18px; }
-.warn-box h4 { margin: 0 0 8px; color: #9a6700; font-size: .9rem; }
-.warn-box ul { margin: 0; padding-left: 18px; font-size: .85rem; color: #7a5600; }
+/* ---------------------------------- Layout ---------------------------------- */
+.wrap { max-width: 1180px; margin: 0 auto; padding: 40px 28px 64px; }
+
+/* ---------------------------------- Buttons ---------------------------------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: "Poppins"; font-weight: 600; border: none;
+  border-radius: var(--radius); padding: .62rem 1.15rem;
+  cursor: pointer; font-size: .92rem; text-decoration: none;
+  transition: .15s; box-shadow: var(--shadow-xs);
+}
+.btn-primary { background: var(--primary); color: var(--primary-foreground); }
+.btn-primary:hover { filter: brightness(1.06); box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.btn-gold { background: var(--tool-accent-2); color: oklch(0.32 0.03 75); }
+.btn-ghost { background: var(--card); color: var(--foreground); border: 1px solid var(--border); box-shadow: none; }
+.btn-ghost:hover { background: var(--secondary); }
+.btn-danger { background: var(--card); color: var(--destructive); border: 1px solid color-mix(in oklch, var(--destructive) 30%, var(--border)); box-shadow: none; }
+.btn-danger:hover { background: color-mix(in oklch, var(--destructive) 8%, var(--card)); }
+.btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+/* ---------------------------------- Cards ---------------------------------- */
+.card { background: var(--card); border: 1px solid var(--border); border-radius: calc(var(--radius) + 4px); padding: 20px; box-shadow: var(--shadow-sm); }
+.grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 20px; }
+.project-card { display: block; text-decoration: none; color: inherit; transition: .18s ease; }
+.project-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-xl); border-color: color-mix(in oklch, var(--primary) 35%, var(--border)); }
+.project-card .thumb { height: 150px; border-radius: var(--radius); background-size: cover; background-position: center; background-color: var(--muted); margin-bottom: 14px; }
+.muted { color: var(--muted-foreground); font-size: .88rem; }
+
+.pill { display: inline-block; font-size: .72rem; font-weight: 600; padding: .22rem .65rem; border-radius: 50px; }
+.pill-live { background: oklch(0.93 0.06 145); color: oklch(0.42 0.12 150); }
+.pill-draft { background: color-mix(in oklch, var(--primary) 15%, var(--card)); color: var(--primary); }
+
+.empty { text-align: center; padding: 70px 20px; }
+
+/* ------------------------------- Karten-Menü ------------------------------- */
+.card-menu-btn { position: absolute; top: 12px; right: 12px; z-index: 2; width: 36px; height: 36px; border-radius: 9px; border: none; background: color-mix(in oklch, var(--card) 88%, transparent); backdrop-filter: blur(4px); color: var(--foreground); font-size: 1.3rem; line-height: 1; cursor: pointer; box-shadow: var(--shadow-sm); transition: .15s; }
+.card-menu-btn:hover { background: var(--card); box-shadow: var(--shadow-md); }
+.card-menu { position: absolute; top: 52px; right: 12px; z-index: 5; background: var(--popover); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-xl); padding: 6px; min-width: 224px; display: flex; flex-direction: column; }
+.card-menu button, .card-menu a { display: block; width: 100%; text-align: left; background: none; border: none; padding: .58rem .75rem; border-radius: 8px; font-size: .9rem; cursor: pointer; color: var(--foreground); text-decoration: none; transition: .12s; }
+.card-menu button:hover, .card-menu a:hover { background: var(--secondary); }
+.card-menu .danger { color: var(--destructive); }
+.card-menu .danger:hover { background: color-mix(in oklch, var(--destructive) 10%, var(--card)); }
+
+/* --------------------------------- Tabellen --------------------------------- */
+.lead-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
+.lead-table th { background: var(--secondary); color: var(--secondary-foreground); text-align: left; padding: .8rem .95rem; font-size: .82rem; font-weight: 600; }
+.lead-table td { padding: .8rem .95rem; border-bottom: 1px solid var(--border); font-size: .9rem; vertical-align: top; }
+.lead-status { font-size: .82rem; padding: .25rem .5rem; border-radius: 6px; border: 1px solid var(--border); background: var(--card); }
+
+/* ---------------------------------- Chips ---------------------------------- */
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--secondary); color: var(--secondary-foreground); border-radius: 50px; padding: .2rem .65rem; font-size: .75rem; font-weight: 600; }
+
+/* --------------------------------- Modals --------------------------------- */
+.modal-backdrop { position: fixed; inset: 0; background: oklch(0.27 0.01 95 / 0.45); backdrop-filter: blur(3px); display: grid; place-items: center; z-index: 100; padding: 20px; animation: fadeIn .15s ease; }
+.modal { background: var(--popover); border: 1px solid var(--border); border-radius: 16px; padding: 26px; width: min(480px, 94vw); box-shadow: var(--shadow-2xl); animation: popIn .18s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popIn { from { opacity: 0; transform: translateY(8px) scale(.98); } to { opacity: 1; transform: none; } }
+
+.cust-row { display: flex; align-items: flex-start; gap: 10px; padding: 11px 13px; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; transition: .12s; }
+.cust-row:hover { background: var(--secondary); border-color: color-mix(in oklch, var(--primary) 30%, var(--border)); }
+.cust-row input { margin-top: 3px; accent-color: var(--primary); }
+
+/* --------------------------------- Formulare --------------------------------- */
+label.field { display: block; margin-bottom: 14px; }
+label.field > span { display: block; font-weight: 600; font-size: .82rem; margin-bottom: 5px; font-family: "Poppins"; color: var(--foreground); }
+input[type=text], input[type=email], input[type=tel], input[type=url], input[type=color], input[type=password], select, textarea {
+  width: 100%; font-family: inherit; font-size: .92rem; padding: .6rem .75rem;
+  border: 1px solid var(--border); border-radius: var(--radius); background: var(--card);
+  color: var(--foreground); transition: .15s;
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--ring); box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 25%, transparent); }
+textarea { min-height: 90px; resize: vertical; }
+.dropzone { border: 2px dashed var(--border); border-radius: 12px; padding: 44px; text-align: center; background: var(--card); transition: .15s; }
+.dropzone:hover { border-color: var(--primary); background: color-mix(in oklch, var(--primary) 4%, var(--card)); }
+
+/* --------------------------------- Hinweise --------------------------------- */
+.warn-box { background: color-mix(in oklch, var(--primary) 8%, var(--card)); border: 1px solid color-mix(in oklch, var(--primary) 25%, var(--border)); border-radius: 12px; padding: 14px 16px; margin-bottom: 18px; }
+.warn-box h4 { margin: 0 0 8px; color: var(--primary); font-size: .9rem; }
+.warn-box ul { margin: 0; padding-left: 18px; font-size: .85rem; color: var(--foreground); }
