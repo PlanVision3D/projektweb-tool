@@ -36,18 +36,9 @@ function LoginForm() {
         border: "1px solid var(--border)",
       }}>
         {/* Logo / Titel */}
-        <div style={{ textAlign: "center", marginBottom: 32 }}>
-          <div style={{
-            background: "oklch(0.27 0.008 106)", borderRadius: 14,
-            padding: "20px 24px", margin: "0 auto 20px", display: "flex",
-            alignItems: "center", justifyContent: "center",
-          }}>
-            <img src="/planvision-logo.png" alt="PlanVision3D" style={{ width: "100%", maxWidth: 260, height: "auto", display: "block" }} />
-          </div>
-          <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700, color: "var(--foreground)", fontFamily: "Poppins, sans-serif" }}>
-            Projektweb-Tool
-          </h1>
-          <p style={{ margin: "6px 0 0", color: "var(--muted-foreground)", fontSize: 14 }}>
+        <div style={{ textAlign: "center", marginBottom: 30 }}>
+          <img src="/planvision-logo-dark.png" alt="PlanVision3D" style={{ width: "100%", maxWidth: 240, height: "auto", display: "block", margin: "0 auto 22px" }} />
+          <p style={{ margin: 0, color: "var(--muted-foreground)", fontSize: 14 }}>
             Admin-Bereich – Bitte anmelden
           </p>
         </div>
