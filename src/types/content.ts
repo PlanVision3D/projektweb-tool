@@ -250,6 +250,8 @@ export interface Project {
   assignedCustomerEmails: string[];
   /** Google-Sheet-ID, in der die Leads zusätzlich landen (aus Vorlage) */
   leadsSheetId?: string;
+  /** Eigene Domain für diese Projektseite, z.B. "suedstadt-erbach.de" (ohne https://, ohne www.) */
+  customDomain?: string;
 }
 
 /** Vom Admin angelegter Kunde mit Zugang zum Kundenbereich. */

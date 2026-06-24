@@ -16,7 +16,7 @@ export interface TemplateMeta {
   tagline: string;
   description: string;
   available: boolean;
-  Component?: ComponentType<{ content: ProjectContent; projectId?: string; slug?: string }>;
+  Component?: ComponentType<{ content: ProjectContent; projectId?: string; slug?: string; basePath?: string }>;
 }
 
 export const TEMPLATES: TemplateMeta[] = [

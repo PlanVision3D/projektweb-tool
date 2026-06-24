@@ -85,6 +85,19 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
   return db.projects.find((p) => p.slug === slug) ?? null;
 }
 
+/** Normalisiert einen Hostnamen: Kleinschreibung, ohne Port, ohne führendes "www." */
+export function normalizeDomain(host: string): string {
+  return host.toLowerCase().trim().replace(/:\d+$/, "").replace(/^www\./, "");
+}
+
+/** Findet ein Projekt anhand seiner eigenen Domain (Custom Domain). */
+export async function getProjectByDomain(host: string): Promise<Project | null> {
+  const db = await readDb();
+  const d = normalizeDomain(host);
+  if (!d) return null;
+  return db.projects.find((p) => p.customDomain && normalizeDomain(p.customDomain) === d) ?? null;
+}
+
 export async function saveProject(project: Project): Promise<Project> {
   const db = await readDb();
   const idx = db.projects.findIndex((p) => p.id === project.id);

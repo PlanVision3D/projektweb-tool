@@ -12,6 +12,7 @@ export default async function Dashboard() {
     unitsCount: p.draft.units.items.length, template: p.draft.template,
     warningsCount: p.warnings.length, heroImageUrl: p.draft.hero.image?.url,
     leadsCount: await countLeads(p.id), assignedCustomerEmails: p.assignedCustomerEmails || [],
+    customDomain: p.customDomain,
   })));
   return (
     <>

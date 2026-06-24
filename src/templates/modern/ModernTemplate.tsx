@@ -24,12 +24,16 @@ function Badge({ children, solid }: { children: React.ReactNode; solid?: boolean
 }
 function Divider() { return <div className={styles.divider}><span /></div>; }
 
-export default function ModernTemplate({ content, projectId, slug }: { content: ProjectContent; projectId?: string; slug?: string }) {
+export default function ModernTemplate({ content, projectId, slug, basePath }: { content: ProjectContent; projectId?: string; slug?: string; basePath?: string }) {
   const { branding, hero, intro, usps, features, units, virtualTour, location, gallery, process, faq, contact, legal } = content;
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
-  const anfrageHref = slug ? `/site/${slug}/anfrage` : "#kontakt";
+  // base bestimmt, wie interne Links gebaut werden:
+  //  - Custom Domain: basePath="" -> /anfrage
+  //  - Vorschau:      slug gesetzt -> /site/<slug>/anfrage
+  const base = basePath !== undefined ? basePath : (slug ? `/site/${slug}` : null);
+  const anfrageHref = base !== null ? `${base}/anfrage` : "#kontakt";
 
   const themeVars = {
     ["--primary" as any]: branding.primaryColor,

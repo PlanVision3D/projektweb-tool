@@ -3,10 +3,12 @@ import { useState } from "react";
 import type { ProjectContent } from "@/types/content";
 import styles from "./anfrage.module.css";
 
-export default function AnfrageForm({ content, projectId, slug }: { content: ProjectContent; projectId: string; slug: string }) {
+export default function AnfrageForm({ content, projectId, slug, basePath }: { content: ProjectContent; projectId: string; slug: string; basePath?: string }) {
   const { branding, intro, hero, contact } = content;
   const [sent, setSent] = useState(false);
   const [busy, setBusy] = useState(false);
+  // Zurück-Link: Custom Domain -> "/", Vorschau -> "/site/<slug>"
+  const backHref = basePath !== undefined ? (basePath || "/") : `/site/${slug}`;
 
   const themeVars = {
     ["--primary" as any]: branding.primaryColor,
@@ -34,7 +36,7 @@ export default function AnfrageForm({ content, projectId, slug }: { content: Pro
       {hero.image && <div className={styles.bg} style={{ backgroundImage: `url(${hero.image.url})` }} />}
       <div className={styles.overlay} />
       <div className={styles.inner}>
-        <a className={styles.back} href={`/site/${slug}`}>← Zurück zur Webseite</a>
+        <a className={styles.back} href={backHref}>← Zurück zur Webseite</a>
         <div className={styles.card}>
           <div className={styles.side}>
             {branding.logoUrl && <img className={styles.logo} src={branding.logoUrl} alt={intro.projectName} />}
@@ -59,7 +61,7 @@ export default function AnfrageForm({ content, projectId, slug }: { content: Pro
                 <div className={styles.check}>✓</div>
                 <h2>Vielen Dank für Ihre Anfrage!</h2>
                 <p>Wir prüfen Ihre Angaben und melden uns persönlich bei Ihnen.</p>
-                <a className={styles.submit} href={`/site/${slug}`}>Zurück zur Webseite</a>
+                <a className={styles.submit} href={backHref}>Zurück zur Webseite</a>
               </div>
             ) : (
               <form onSubmit={submit}>
