@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 
 export interface ProjectCardData {
@@ -107,7 +108,7 @@ export default function ProjectCard({ p }: { p: ProjectCardData }) {
         {p.warningsCount > 0 && <p className="muted" style={{ color: "#b26a00", marginTop: 6 }}>⚠ {p.warningsCount} offene Datenpunkte</p>}
       </div>
 
-      {shareOpen && (
+      {shareOpen && typeof document !== "undefined" && createPortal(
         <div className="modal-backdrop" onClick={() => setShareOpen(false)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
             <h3 style={{ marginTop: 0 }}>Kunden zuweisen</h3>
@@ -129,10 +130,11 @@ export default function ProjectCard({ p }: { p: ProjectCardData }) {
               <button className="btn btn-primary" onClick={saveShare} disabled={busy}>Speichern</button>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
-      {domainOpen && (
+      {domainOpen && typeof document !== "undefined" && createPortal(
         <div className="modal-backdrop" onClick={() => setDomainOpen(false)}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
             <h3 style={{ marginTop: 0 }}>Domain verknüpfen</h3>
@@ -160,7 +162,8 @@ export default function ProjectCard({ p }: { p: ProjectCardData }) {
               <button className="btn btn-primary" onClick={saveDomain} disabled={busy}>Speichern</button>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
