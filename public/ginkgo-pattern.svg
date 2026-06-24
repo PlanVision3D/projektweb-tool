@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="1240" viewBox="0 0 620 620">
+  <!-- Filled leaf shapes (subtle) -->
+  <g fill="#7fa047" fill-opacity="0.07" stroke="none">
+    <g transform="translate(95 470) rotate(18) scale(1.05)">
+      <path d="M0 8 C-46 8 -78 -10 -92 -42 C-66 -60 -34 -68 0 -68 C34 -68 66 -60 92 -42 C78 -10 46 8 0 8 Z"/>
+    </g>
+    <g transform="translate(520 130) rotate(150) scale(.85)">
+      <path d="M0 8 C-46 8 -78 -10 -92 -42 C-66 -60 -34 -68 0 -68 C34 -68 66 -60 92 -42 C78 -10 46 8 0 8 Z"/>
+    </g>
+  </g>
+  <!-- Outline ginkgo fans with stem and ribs -->
+  <g fill="none" stroke="#7fa047" stroke-opacity="0.34" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="translate(150 165) scale(.92)">
+      <path d="M0 122 L0 8"/>
+      <path d="M0 8 C-46 8 -78 -10 -92 -42 C-66 -60 -34 -68 0 -68 C34 -68 66 -60 92 -42 C78 -10 46 8 0 8 Z"/>
+      <path d="M0 8 L0 -64 M0 8 L-46 -54 M0 8 L46 -54 M0 8 L-82 -40 M0 8 L82 -40"/>
+    </g>
+    <g transform="translate(470 410) rotate(168) scale(.58)">
+      <path d="M0 122 L0 8"/>
+      <path d="M0 8 C-46 8 -78 -10 -92 -42 C-66 -60 -34 -68 0 -68 C34 -68 66 -60 92 -42 C78 -10 46 8 0 8 Z"/>
+      <path d="M0 8 L0 -64 M0 8 L-46 -54 M0 8 L46 -54 M0 8 L-82 -40 M0 8 L82 -40"/>
+    </g>
+    <g transform="translate(560 520) rotate(64) scale(.46)">
+      <path d="M0 122 L0 8"/>
+      <path d="M0 8 C-46 8 -78 -10 -92 -42 C-66 -60 -34 -68 0 -68 C34 -68 66 -60 92 -42 C78 -10 46 8 0 8 Z"/>
+      <path d="M0 8 L0 -64 M0 8 L-46 -54 M0 8 L46 -54 M0 8 L-82 -40 M0 8 L82 -40"/>
+    </g>
+  </g>
+</svg>
