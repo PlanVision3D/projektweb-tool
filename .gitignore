@@ -2,6 +2,12 @@ node_modules/
 .next/
 *.tsbuildinfo
 next-env.d.ts
+# Geheime Zugangsdaten (Firebase etc.) – NIEMALS committen
+.env
+.env.local
+.env*.local
+*-service-account*.json
+firebase-adminsdk*.json
 # Laufzeitdaten werden mit eingecheckt damit Vercel funktioniert
 # data/db.json
 # public/uploads/
