@@ -38,11 +38,13 @@ function LoginForm() {
         {/* Logo / Titel */}
         <div style={{ textAlign: "center", marginBottom: 32 }}>
           <div style={{
-            width: 58, height: 58, borderRadius: 16, background: "var(--primary)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            margin: "0 auto 16px", fontSize: 26,
-          }}>🏗️</div>
-          <h1 style={{ margin: 0, fontSize: 23, fontWeight: 700, color: "var(--foreground)", fontFamily: "Poppins, sans-serif" }}>
+            background: "oklch(0.27 0.008 106)", borderRadius: 14,
+            padding: "20px 24px", margin: "0 auto 20px", display: "flex",
+            alignItems: "center", justifyContent: "center",
+          }}>
+            <img src="/planvision-logo.png" alt="PlanVision3D" style={{ width: "100%", maxWidth: 260, height: "auto", display: "block" }} />
+          </div>
+          <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700, color: "var(--foreground)", fontFamily: "Poppins, sans-serif" }}>
             Projektweb-Tool
           </h1>
           <p style={{ margin: "6px 0 0", color: "var(--muted-foreground)", fontSize: 14 }}>
@@ -51,7 +53,7 @@ function LoginForm() {
         </div>
 
         <form onSubmit={submit}>
-          <label style={{ display: "block", marginBottom: 6, fontSize: 13, fontWeight: 600, color: "#374151" }}>
+          <label style={{ display: "block", marginBottom: 6, fontSize: 13, fontWeight: 600, color: "var(--foreground)" }}>
             Passwort
           </label>
           <input
