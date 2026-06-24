@@ -9,8 +9,11 @@
  * Ausführen:  node scripts/migrate-to-firestore.mjs
  */
 import { readFileSync } from "fs";
+import { fileURLToPath } from "url";
 import { initializeApp, cert } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
+
+const resolve = (rel) => fileURLToPath(new URL(rel, import.meta.url));
 
 // --- .env.local laden (einfacher Parser) ---
 function loadEnv(file) {
@@ -25,7 +28,7 @@ function loadEnv(file) {
     }
   } catch { /* keine .env.local – evtl. sind die Vars schon gesetzt */ }
 }
-loadEnv(new URL("../.env.local", import.meta.url).pathname);
+loadEnv(resolve("../.env.local"));
 
 const projectId = process.env.FIREBASE_PROJECT_ID;
 const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
@@ -40,7 +43,7 @@ const app = initializeApp({ credential: cert({ projectId, clientEmail, privateKe
 const db = getFirestore(app);
 db.settings({ ignoreUndefinedProperties: true });
 
-const data = JSON.parse(readFileSync(new URL("../data/db.json", import.meta.url).pathname, "utf8"));
+const data = JSON.parse(readFileSync(resolve("../data/db.json"), "utf8"));
 
 async function upload(collection, items, idField) {
   let n = 0;
