@@ -3,7 +3,15 @@ import { notFound } from "next/navigation";
 import { getProjectByDomain } from "@/lib/db";
 import { getTemplate } from "@/templates/registry";
 
-export const dynamic = "force-dynamic";
+// ISR: Seite statisch cachen (aus dem CDN ausliefern) statt bei jedem Besuch neu zu
+// rendern. Aktualisiert wird sie sofort beim Veröffentlichen (on-demand revalidation
+// in der Publish-Route) – die 1h ist nur ein Sicherheitsnetz, falls das mal ausfällt.
+export const revalidate = 3600;
+// Leeres Array = nichts beim Build vorbauen, aber unbekannte Domains on-demand
+// generieren UND cachen (statt bei jedem Besuch neu zu rendern).
+export function generateStaticParams() {
+  return [];
+}
 
 export async function generateMetadata({ params }: { params: { domain: string } }): Promise<Metadata> {
   const project = await getProjectByDomain(decodeURIComponent(params.domain));

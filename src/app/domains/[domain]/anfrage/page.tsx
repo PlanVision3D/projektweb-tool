@@ -2,7 +2,10 @@ import { notFound } from "next/navigation";
 import { getProjectByDomain } from "@/lib/db";
 import AnfrageForm from "@/templates/modern/AnfrageForm";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600; // ISR – siehe ../page.tsx
+export function generateStaticParams() {
+  return [];
+}
 
 /** Anfrage-Seite unter einer eigenen Domain, z.B. suedstadt-erbach.de/anfrage */
 export default async function DomainAnfragePage({ params }: { params: { domain: string } }) {

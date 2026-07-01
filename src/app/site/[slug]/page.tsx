@@ -3,7 +3,11 @@ import { notFound } from "next/navigation";
 import { getProjectBySlug } from "@/lib/db";
 import { getTemplate } from "@/templates/registry";
 
-export const dynamic = "force-dynamic";
+// ISR: statisch cachen, on-demand neu beim Veröffentlichen (siehe Publish-Route).
+export const revalidate = 3600;
+export function generateStaticParams() {
+  return [];
+}
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const project = await getProjectBySlug(params.slug);

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getProject, saveProject } from "@/lib/db";
+import { revalidateProjectPaths } from "@/lib/revalidate";
 
 /**
  * VERÖFFENTLICHEN: Entwurf -> Live.
@@ -12,5 +13,10 @@ export async function POST(_req: NextRequest, { params }: { params: { id: string
   p.published = JSON.parse(JSON.stringify(p.draft));
   p.publishedAt = new Date().toISOString();
   await saveProject(p);
+
+  // ISR-Cache der öffentlichen Seiten sofort erneuern, damit die Änderung live ist,
+  // ohne dass jeder Besuch die Seite neu rendern muss.
+  revalidateProjectPaths(p.slug, p.customDomain);
+
   return NextResponse.json({ ok: true, publishedAt: p.publishedAt, slug: p.slug });
 }

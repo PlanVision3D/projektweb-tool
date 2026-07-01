@@ -1,0 +1,103 @@
+<svg width="600" height="600" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .leaf-green {
+        stroke: #8EA63A;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        opacity: 0.14;
+      }
+      .leaf-gold {
+        stroke: #C9A85A;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        opacity: 0.10;
+      }
+    </style>
+  </defs>
+
+  <!-- oben links -->
+  <g class="leaf-green">
+    <path d="M72 88C104 92 129 116 135 148C102 144 78 120 72 88Z"></path>
+    <path d="M102 102C101 122 91 141 76 154"></path>
+  </g>
+
+  <g class="leaf-gold">
+    <path d="M154 62C177 66 194 84 198 108C174 104 158 87 154 62Z"></path>
+    <path d="M176 72C175 87 168 101 156 111"></path>
+  </g>
+
+  <!-- oben rechts -->
+  <g class="leaf-green">
+    <path d="M474 84C504 90 526 113 532 143C500 137 478 114 474 84Z"></path>
+    <path d="M503 96C501 116 491 135 476 149"></path>
+  </g>
+
+  <g class="leaf-gold">
+    <path d="M528 132C548 136 563 151 567 171C546 168 531 153 528 132Z"></path>
+    <path d="M547 140C546 153 540 164 530 173"></path>
+  </g>
+
+  <!-- mitte links -->
+  <g class="leaf-gold">
+    <path d="M88 246C120 251 143 275 148 306C116 301 93 278 88 246Z"></path>
+    <path d="M117 259C116 279 106 297 91 311"></path>
+  </g>
+
+  <g class="leaf-green">
+    <path d="M150 312C173 316 190 333 194 356C170 352 153 336 150 312Z"></path>
+    <path d="M171 322C170 336 164 349 153 359"></path>
+  </g>
+
+  <!-- mitte -->
+  <g class="leaf-green">
+    <path d="M272 210C308 217 334 244 340 280C304 273 278 247 272 210Z"></path>
+    <path d="M305 226C303 249 291 270 274 286"></path>
+  </g>
+
+  <g class="leaf-gold">
+    <path d="M338 282C361 287 379 305 383 329C359 325 341 307 338 282Z"></path>
+    <path d="M360 292C358 307 352 320 340 331"></path>
+  </g>
+
+  <!-- mitte rechts -->
+  <g class="leaf-green">
+    <path d="M454 258C484 264 506 287 512 317C480 311 458 288 454 258Z"></path>
+    <path d="M483 270C481 290 471 308 456 322"></path>
+  </g>
+
+  <!-- unten links -->
+  <g class="leaf-green">
+    <path d="M74 434C104 440 126 463 132 493C100 487 78 464 74 434Z"></path>
+    <path d="M103 446C101 466 91 484 76 498"></path>
+  </g>
+
+  <g class="leaf-gold">
+    <path d="M136 500C158 504 174 521 178 543C155 539 139 523 136 500Z"></path>
+    <path d="M157 509C156 523 149 535 138 545"></path>
+  </g>
+
+  <!-- unten mitte -->
+  <g class="leaf-gold">
+    <path d="M276 446C308 452 331 477 337 508C304 502 281 478 276 446Z"></path>
+    <path d="M305 459C304 479 294 497 279 511"></path>
+  </g>
+
+  <g class="leaf-green">
+    <path d="M344 510C366 514 383 531 387 554C363 550 347 534 344 510Z"></path>
+    <path d="M365 520C364 534 357 547 346 557"></path>
+  </g>
+
+  <!-- unten rechts -->
+  <g class="leaf-green">
+    <path d="M476 428C507 434 530 458 536 489C503 483 480 459 476 428Z"></path>
+    <path d="M505 441C504 461 493 479 478 493"></path>
+  </g>
+
+  <g class="leaf-gold">
+    <path d="M530 492C549 496 564 511 568 531C547 528 532 513 530 492Z"></path>
+    <path d="M548 500C547 513 541 525 531 533"></path>
+  </g>
+</svg>

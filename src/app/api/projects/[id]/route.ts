@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getProject, saveProject, deleteProject } from "@/lib/db";
+import { revalidateProjectPaths } from "@/lib/revalidate";
 import type { ProjectContent } from "@/types/content";
 
 export async function GET(_req: NextRequest, { params }: { params: { id: string } }) {
@@ -20,6 +21,9 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
 }
 
 export async function DELETE(_req: NextRequest, { params }: { params: { id: string } }) {
+  const p = await getProject(params.id);
   await deleteProject(params.id);
+  // Gecachte öffentliche Seiten invalidieren, damit sie sofort 404 liefern
+  if (p) revalidateProjectPaths(p.slug, p.customDomain);
   return NextResponse.json({ ok: true });
 }

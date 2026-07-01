@@ -2,7 +2,10 @@ import { notFound } from "next/navigation";
 import { getProjectBySlug } from "@/lib/db";
 import AnfrageForm from "@/templates/modern/AnfrageForm";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600; // ISR – siehe ../page.tsx
+export function generateStaticParams() {
+  return [];
+}
 
 export default async function AnfragePage({ params }: { params: { slug: string } }) {
   const project = await getProjectBySlug(params.slug);
