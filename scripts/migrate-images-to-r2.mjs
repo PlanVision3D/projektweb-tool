@@ -56,22 +56,33 @@ async function processImage(input, ext) {
   return { buffer: input, ext: ext || ".bin", contentType: "application/octet-stream" };
 }
 
+// ---- Firebase-Zugangsdaten ermitteln: erst Service-Account-JSON, dann Env-Variablen ----
+async function resolveFirebaseCred() {
+  const saPath = process.env.FIREBASE_SERVICE_ACCOUNT || "service-account.json";
+  try {
+    const j = JSON.parse(await fs.readFile(saPath, "utf8"));
+    if (j.project_id && j.client_email && j.private_key) {
+      return { projectId: j.project_id, clientEmail: j.client_email, privateKey: j.private_key, source: saPath };
+    }
+  } catch { /* keine Datei -> Env-Variablen versuchen */ }
+  const { FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL, FIREBASE_PRIVATE_KEY } = process.env;
+  if (FIREBASE_PROJECT_ID && FIREBASE_CLIENT_EMAIL && FIREBASE_PRIVATE_KEY) {
+    return { projectId: FIREBASE_PROJECT_ID, clientEmail: FIREBASE_CLIENT_EMAIL, privateKey: FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n"), source: ".env" };
+  }
+  return null;
+}
+
 // ---- DB-Backend wählen ----
-const useFirestore = !!(process.env.FIREBASE_PROJECT_ID && process.env.FIREBASE_CLIENT_EMAIL && process.env.FIREBASE_PRIVATE_KEY);
+const cred = await resolveFirebaseCred();
+const useFirestore = !!cred;
 let firestore = null;
 if (useFirestore) {
   const { initializeApp, getApps, cert } = await import("firebase-admin/app");
   const { getFirestore } = await import("firebase-admin/firestore");
-  const app = getApps().length
-    ? getApps()[0]
-    : initializeApp({ credential: cert({
-        projectId: process.env.FIREBASE_PROJECT_ID,
-        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-        privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n"),
-      }) });
+  const app = getApps().length ? getApps()[0] : initializeApp({ credential: cert(cred) });
   firestore = getFirestore(app);
 }
-console.log(`DB-Backend: ${useFirestore ? "Firestore (Produktion)" : "lokale data/db.json"}${DRY ? "  |  DRY-RUN (nichts wird geändert)" : ""}\n`);
+console.log(`DB-Backend: ${useFirestore ? `Firestore (Produktion, via ${cred.source})` : "lokale data/db.json"}${DRY ? "  |  DRY-RUN (nichts wird geändert)" : ""}\n`);
 
 // ---- Projekte laden ----
 let dbCache = null; // nur für db.json
