@@ -27,7 +27,7 @@ export default function Slider({ images }: { images: MediaImage[] }) {
   return (
     <div className={styles.slider}>
       <div className={styles.sliderStage}>
-        <img src={cur.url} alt={cur.alt || cur.caption || ""} className={styles.sliderZoom} onClick={() => setOpen(true)} title="Zum Vergrößern klicken" />
+        <img src={cur.url} alt={cur.alt || cur.caption || ""} className={styles.sliderZoom} onClick={() => setOpen(true)} title="Zum Vergrößern klicken" loading="lazy" decoding="async" />
         {images.length > 1 && (
           <>
             <button className={`${styles.sliderArrow} ${styles.sliderPrev}`} onClick={() => go(-1)} aria-label="Vorheriges Bild">‹</button>

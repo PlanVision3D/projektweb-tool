@@ -16,8 +16,8 @@
           "ctaColor": "#6f9a3c",
           "badgeColor": "#b56a43",
           "font": "Poppins",
-          "logoUrl": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/f879eaef-ef0e-41da-88e6-d839651ec945.webp",
-          "agencyLogoUrl": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/b95eba1f-8467-4fef-aa8c-6ccd05c72ffd.webp"
+          "logoUrl": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/1e50a7b7-98b9-4faa-aae8-5e3169944c66.webp",
+          "agencyLogoUrl": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/3f85466f-fb8b-43bd-b369-cb01ecd94d82.webp"
         },
         "hero": {
           "headline": "Modernes Wohnen in Erbach",
@@ -40,7 +40,7 @@
           "subheadline": "22 Wohneinheiten zur Vermietung",
           "shortDescription": "Neubau eines MFH mit 22 Wohneinheiten",
           "image": {
-            "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/2743c725-a08d-45cb-aedd-3f4b4e4c0a0c.png"
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/6c09f8af-24e8-40ab-85dd-01517bad4339.webp"
           }
         },
         "intro": {
@@ -69,11 +69,11 @@
           ],
           "images": [
             {
-              "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/b16c678a-aeee-47b1-8c2f-1b84483cc7cb.png",
+              "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/e6f84034-da20-4a0a-967a-0d31cd6bba2f.webp",
               "caption": "Südansicht"
             },
             {
-              "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/0a5b6df2-8bdf-4e82-8230-8e6a5bdab914.png"
+              "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/8ce2368e-c9d3-4c5f-9164-3c748e2d13bd.webp"
             }
           ]
         },
@@ -82,14 +82,14 @@
             "title": "Barrierefrei wohnen",
             "text": "Durchdachte Grundrisse, schwellenarme Zugänge und komfortable Bewegungsflächen ermöglichen selbstbestimmtes Leben im Alter. Alles ist auf Sicherheit, Alltagserleichterung und langfristige Wohnqualität für Seniorinnen und Senioren ausgerichtet, komfortabel, praktisch und zukunftssicher geplant.",
             "image": {
-              "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/70435e5d-6ae0-43c6-aedd-ddea974e0d41.png"
+              "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/5cdba0c9-0668-42d9-af76-cdda79f914ed.webp"
             }
           },
           {
             "title": "Naturnah entspannen",
             "text": "Die ruhige Lage nahe grüner Freiräume schafft Erholung direkt vor der Haustür. Naturnahe Wege, frische Luft und wenig Verkehr bieten ein entspanntes Umfeld für jeden Tag in dauerhaft bester Wohnqualität.",
             "image": {
-              "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/1d3ba86e-7e57-45f1-ab0c-7cd66e437de6.png"
+              "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/1424be03-8c7d-4ee7-8090-a32d046a8d7c.webp"
             }
           }
         ],
@@ -400,7 +400,7 @@
           "intro": "Entdecken Sie alle 22 Wohneinheiten interaktiv: Wählen Sie ein Geschoss, sehen Sie den Grundriss und die verfügbaren Wohnungen mit Flächen und Mietpreisen.",
           "finderHint": "Bitte wählen Sie ein Geschoss, um Grundriss, Flächen und Mietpreise zu sehen.",
           "buildingImage": {
-            "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/3d45093f-0e84-4699-bd1e-3362d1e24a9c.webp"
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/cb8af251-26f1-4f0f-90ab-e6cca32c1fed.webp"
           },
           "navigator": {
             "rootId": "44d73fb1-ba4e-4d4a-a6f1-387ad8d6e074",
@@ -409,7 +409,7 @@
                 "id": "44d73fb1-ba4e-4d4a-a6f1-387ad8d6e074",
                 "title": "Hauptansicht",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/3d45093f-0e84-4699-bd1e-3362d1e24a9c.webp"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/cb8af251-26f1-4f0f-90ab-e6cca32c1fed.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -832,7 +832,7 @@
                 "id": "39fdd343-de5d-4bcd-b89f-28262cebf8e2",
                 "title": "Erdgeschoss",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/c36a7e19-fd81-41c5-8c15-cfc919fb2913.png"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/a63f103c-44b5-4530-8bea-4642c95c84ee.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -876,7 +876,7 @@
                 "id": "e333ff19-c2cb-4332-807f-75595ba40346",
                 "title": "WE | EG 01 und 02",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/1d61da7f-6b77-4885-8fac-a5af8237f5e5.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/4cf6c9e7-b25c-435f-8f89-936f1b04e51d.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -887,7 +887,7 @@
                 "id": "2586df51-c47d-4982-aea8-8bab03545e27",
                 "title": "1. Obergeschoss",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/d44734a0-1387-4d94-b703-8201881adc54.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/fdd57914-32c4-40f2-8d19-402e76c18c4a.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -1083,7 +1083,7 @@
                 "id": "ff43f540-b9aa-407e-913f-565530e058d1",
                 "title": "WE | 01 und 02",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/b1f1683b-8935-4761-bba5-3c1775e68cb8.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/7e19aa7f-5077-4770-85f5-7a52fd7effe8.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -1094,7 +1094,7 @@
                 "id": "6699a9a2-6546-48c6-8222-82d1b7789b49",
                 "title": "WE | 03 und 04",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/29a2e220-0aa2-4df9-9c62-23ca0cc7efdc.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/3aff6750-99d8-48a8-92e2-6f1a2dd5e6db.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -1105,7 +1105,7 @@
                 "id": "0656bf4f-98f8-461a-93e9-5c1b6666dddc",
                 "title": "WE | 05 und 06",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/b499688c-1ef8-4e05-a2cd-4d3d678528e6.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/88ce1a6f-bd30-4a28-b36c-b059bfd2628b.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -1116,7 +1116,7 @@
                 "id": "a9585fd8-18c1-444a-a1b5-3703818aad73",
                 "title": "WE | 07 und 08",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/e86bf083-f4ba-4fed-ba76-dd24b7e23b94.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/55a300db-75ba-4efb-8cf0-2f102d76aef2.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -1127,7 +1127,7 @@
                 "id": "5ce35008-d3eb-4fa6-b8a5-9d440c712854",
                 "title": "2. Obergeschoss",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/aaa4a68f-5c7b-4a0a-817e-0a87fc3d02ef.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/4039fd33-7ccc-4d86-b6ef-d9dffc25aa06.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -1355,7 +1355,7 @@
                 "id": "bb118dfe-cdf3-42f1-9b05-101d7a1905d3",
                 "title": "WE | 09 und 10",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/a6731204-f600-4a9b-abfe-2eed0d307456.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/74525006-67bf-44cf-9c55-33e32a3e5076.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -1366,7 +1366,7 @@
                 "id": "b4d97f4e-4de6-4a59-b2b0-a42179232c1e",
                 "title": "WE | 11 und 12",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/91d9d951-472a-436a-8462-5cdb14ecb479.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/f0b42599-024e-4bd1-a127-bfbc5db7e181.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -1377,7 +1377,7 @@
                 "id": "7acaefcf-0210-4e7a-8b99-4f8701f5fdc3",
                 "title": "WE | 13 und 14",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/ec84c854-6fd1-4ab0-85c2-b0764ae722c3.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/c60a0123-5ee4-4571-93cb-f6812a86de50.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -1388,7 +1388,7 @@
                 "id": "e28f33d4-712c-42f0-87bf-200bfb2e50dd",
                 "title": "WE | 15 und 16",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/87b97247-1bbc-4f6c-a532-31bba85a6f1d.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/f4569c6b-f658-4c3c-b0dd-3293828a19a2.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -1399,7 +1399,7 @@
                 "id": "055497ca-aaf6-4a97-83f6-cdc11b1d8b89",
                 "title": "Dachgeschoss",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/79aa317e-129a-4ee8-984a-7c6f4d2efe94.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/91a08fa7-5931-4c90-9641-3b245e20a12a.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -1511,7 +1511,7 @@
                 "id": "1a5c2ac6-62bb-4bfd-bcbb-19290b88b636",
                 "title": "WE | 17 und 18",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/fab2babc-d224-4ca5-92b4-97d99b14fdf8.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/54219a20-f463-4a51-9596-129c6803dabf.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -1522,7 +1522,7 @@
                 "id": "cbe934ef-f56f-47d6-803d-204ea5f11346",
                 "title": "WE | 19 und 20",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/9e386680-5aab-4c5c-8f66-48d9faa87b0a.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/5fbfe475-2cd9-43d9-a72f-9b3d0ef7ed5a.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -1537,15 +1537,15 @@
           "subheading": "Musterwohnung",
           "images": [
             {
-              "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/7a73a572-ab78-4b2a-b923-d1f313dbbf30.png",
+              "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/35a46f43-815c-4a3c-8de6-500aa6c9809f.webp",
               "caption": "Wohnen & Essen"
             },
             {
-              "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/52c272a2-b023-4823-acf9-f894a097c3ea.png",
+              "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/4a2902f6-6b50-4894-854a-b4fa0c1c8d65.webp",
               "caption": "Offener Wohnbereich"
             },
             {
-              "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/1298f67d-7682-4d6c-ad2c-74a957b10056.png",
+              "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/a7a9c59c-8cef-480c-8343-546807028e68.webp",
               "caption": "Küche"
             }
           ]
@@ -1582,28 +1582,28 @@
           "description": "Das Mehrfamilienhaus in Erbach überzeugt durch seine attraktive Wohnlage, moderne Neubauplanung und insgesamt 22 Wohneinheiten – ideal für alle, die Wert auf zeitgemäßes Wohnen und eine gute Infrastruktur legen.",
           "mapEmbedUrl": "https://www.google.com/maps?q=Friedrich%20Ebert%20Stra%C3%9Fe%2016%2C%2064711%20Erbach&output=embed",
           "image": {
-            "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/957efddd-1d87-4a09-8b25-f583166440f2.png"
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/51751d24-e083-41cc-b5f2-9b59daaf4204.webp"
           }
         },
         "gallery": [
           {
-            "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/7a73a572-ab78-4b2a-b923-d1f313dbbf30.png",
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/35a46f43-815c-4a3c-8de6-500aa6c9809f.webp",
             "caption": "Wohnen & Essen"
           },
           {
-            "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/52c272a2-b023-4823-acf9-f894a097c3ea.png",
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/4a2902f6-6b50-4894-854a-b4fa0c1c8d65.webp",
             "caption": "Offener Wohnbereich"
           },
           {
-            "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/1298f67d-7682-4d6c-ad2c-74a957b10056.png",
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/a7a9c59c-8cef-480c-8343-546807028e68.webp",
             "caption": "Küche"
           },
           {
-            "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/013a4603-cf0d-4f05-8087-8c931ceb98e0.png",
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/d284506c-ed79-482c-ab94-483d3ca823ef.webp",
             "caption": "Schlafzimmer"
           },
           {
-            "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/63adb52b-7409-47bb-8f3f-8c5c22b046cd.png",
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/8b26fb3e-e135-468a-9c8a-9ff48fd96b19.webp",
             "caption": "Barrierefreies Bad"
           }
         ],
@@ -1758,8 +1758,8 @@
           "ctaColor": "#6f9a3c",
           "badgeColor": "#b56a43",
           "font": "Poppins",
-          "logoUrl": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/f879eaef-ef0e-41da-88e6-d839651ec945.webp",
-          "agencyLogoUrl": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/b95eba1f-8467-4fef-aa8c-6ccd05c72ffd.webp"
+          "logoUrl": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/1e50a7b7-98b9-4faa-aae8-5e3169944c66.webp",
+          "agencyLogoUrl": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/3f85466f-fb8b-43bd-b369-cb01ecd94d82.webp"
         },
         "hero": {
           "headline": "Modernes Wohnen in Erbach",
@@ -1782,7 +1782,7 @@
           "subheadline": "22 Wohneinheiten zur Vermietung",
           "shortDescription": "Neubau eines MFH mit 22 Wohneinheiten",
           "image": {
-            "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/2743c725-a08d-45cb-aedd-3f4b4e4c0a0c.png"
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/6c09f8af-24e8-40ab-85dd-01517bad4339.webp"
           }
         },
         "intro": {
@@ -1811,11 +1811,11 @@
           ],
           "images": [
             {
-              "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/b16c678a-aeee-47b1-8c2f-1b84483cc7cb.png",
+              "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/e6f84034-da20-4a0a-967a-0d31cd6bba2f.webp",
               "caption": "Südansicht"
             },
             {
-              "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/0a5b6df2-8bdf-4e82-8230-8e6a5bdab914.png"
+              "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/8ce2368e-c9d3-4c5f-9164-3c748e2d13bd.webp"
             }
           ]
         },
@@ -1824,14 +1824,14 @@
             "title": "Barrierefrei wohnen",
             "text": "Durchdachte Grundrisse, schwellenarme Zugänge und komfortable Bewegungsflächen ermöglichen selbstbestimmtes Leben im Alter. Alles ist auf Sicherheit, Alltagserleichterung und langfristige Wohnqualität für Seniorinnen und Senioren ausgerichtet, komfortabel, praktisch und zukunftssicher geplant.",
             "image": {
-              "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/70435e5d-6ae0-43c6-aedd-ddea974e0d41.png"
+              "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/5cdba0c9-0668-42d9-af76-cdda79f914ed.webp"
             }
           },
           {
             "title": "Naturnah entspannen",
             "text": "Die ruhige Lage nahe grüner Freiräume schafft Erholung direkt vor der Haustür. Naturnahe Wege, frische Luft und wenig Verkehr bieten ein entspanntes Umfeld für jeden Tag in dauerhaft bester Wohnqualität.",
             "image": {
-              "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/1d3ba86e-7e57-45f1-ab0c-7cd66e437de6.png"
+              "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/1424be03-8c7d-4ee7-8090-a32d046a8d7c.webp"
             }
           }
         ],
@@ -2142,7 +2142,7 @@
           "intro": "Entdecken Sie alle 22 Wohneinheiten interaktiv: Wählen Sie ein Geschoss, sehen Sie den Grundriss und die verfügbaren Wohnungen mit Flächen und Mietpreisen.",
           "finderHint": "Bitte wählen Sie ein Geschoss, um Grundriss, Flächen und Mietpreise zu sehen.",
           "buildingImage": {
-            "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/3d45093f-0e84-4699-bd1e-3362d1e24a9c.webp"
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/cb8af251-26f1-4f0f-90ab-e6cca32c1fed.webp"
           },
           "navigator": {
             "rootId": "44d73fb1-ba4e-4d4a-a6f1-387ad8d6e074",
@@ -2151,7 +2151,7 @@
                 "id": "44d73fb1-ba4e-4d4a-a6f1-387ad8d6e074",
                 "title": "Hauptansicht",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/3d45093f-0e84-4699-bd1e-3362d1e24a9c.webp"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/cb8af251-26f1-4f0f-90ab-e6cca32c1fed.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -2574,7 +2574,7 @@
                 "id": "39fdd343-de5d-4bcd-b89f-28262cebf8e2",
                 "title": "Erdgeschoss",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/c36a7e19-fd81-41c5-8c15-cfc919fb2913.png"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/a63f103c-44b5-4530-8bea-4642c95c84ee.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -2618,7 +2618,7 @@
                 "id": "e333ff19-c2cb-4332-807f-75595ba40346",
                 "title": "WE | EG 01 und 02",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/1d61da7f-6b77-4885-8fac-a5af8237f5e5.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/4cf6c9e7-b25c-435f-8f89-936f1b04e51d.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -2629,7 +2629,7 @@
                 "id": "2586df51-c47d-4982-aea8-8bab03545e27",
                 "title": "1. Obergeschoss",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/d44734a0-1387-4d94-b703-8201881adc54.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/fdd57914-32c4-40f2-8d19-402e76c18c4a.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -2825,7 +2825,7 @@
                 "id": "ff43f540-b9aa-407e-913f-565530e058d1",
                 "title": "WE | 01 und 02",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/b1f1683b-8935-4761-bba5-3c1775e68cb8.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/7e19aa7f-5077-4770-85f5-7a52fd7effe8.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -2836,7 +2836,7 @@
                 "id": "6699a9a2-6546-48c6-8222-82d1b7789b49",
                 "title": "WE | 03 und 04",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/29a2e220-0aa2-4df9-9c62-23ca0cc7efdc.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/3aff6750-99d8-48a8-92e2-6f1a2dd5e6db.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -2847,7 +2847,7 @@
                 "id": "0656bf4f-98f8-461a-93e9-5c1b6666dddc",
                 "title": "WE | 05 und 06",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/b499688c-1ef8-4e05-a2cd-4d3d678528e6.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/88ce1a6f-bd30-4a28-b36c-b059bfd2628b.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -2858,7 +2858,7 @@
                 "id": "a9585fd8-18c1-444a-a1b5-3703818aad73",
                 "title": "WE | 07 und 08",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/e86bf083-f4ba-4fed-ba76-dd24b7e23b94.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/55a300db-75ba-4efb-8cf0-2f102d76aef2.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -2869,7 +2869,7 @@
                 "id": "5ce35008-d3eb-4fa6-b8a5-9d440c712854",
                 "title": "2. Obergeschoss",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/aaa4a68f-5c7b-4a0a-817e-0a87fc3d02ef.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/4039fd33-7ccc-4d86-b6ef-d9dffc25aa06.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -3097,7 +3097,7 @@
                 "id": "bb118dfe-cdf3-42f1-9b05-101d7a1905d3",
                 "title": "WE | 09 und 10",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/a6731204-f600-4a9b-abfe-2eed0d307456.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/74525006-67bf-44cf-9c55-33e32a3e5076.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -3108,7 +3108,7 @@
                 "id": "b4d97f4e-4de6-4a59-b2b0-a42179232c1e",
                 "title": "WE | 11 und 12",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/91d9d951-472a-436a-8462-5cdb14ecb479.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/f0b42599-024e-4bd1-a127-bfbc5db7e181.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -3119,7 +3119,7 @@
                 "id": "7acaefcf-0210-4e7a-8b99-4f8701f5fdc3",
                 "title": "WE | 13 und 14",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/ec84c854-6fd1-4ab0-85c2-b0764ae722c3.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/c60a0123-5ee4-4571-93cb-f6812a86de50.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -3130,7 +3130,7 @@
                 "id": "e28f33d4-712c-42f0-87bf-200bfb2e50dd",
                 "title": "WE | 15 und 16",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/87b97247-1bbc-4f6c-a532-31bba85a6f1d.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/f4569c6b-f658-4c3c-b0dd-3293828a19a2.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -3141,7 +3141,7 @@
                 "id": "055497ca-aaf6-4a97-83f6-cdc11b1d8b89",
                 "title": "Dachgeschoss",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/79aa317e-129a-4ee8-984a-7c6f4d2efe94.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/91a08fa7-5931-4c90-9641-3b245e20a12a.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -3253,7 +3253,7 @@
                 "id": "1a5c2ac6-62bb-4bfd-bcbb-19290b88b636",
                 "title": "WE | 17 und 18",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/fab2babc-d224-4ca5-92b4-97d99b14fdf8.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/54219a20-f463-4a51-9596-129c6803dabf.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -3264,7 +3264,7 @@
                 "id": "cbe934ef-f56f-47d6-803d-204ea5f11346",
                 "title": "WE | 19 und 20",
                 "image": {
-                  "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/9e386680-5aab-4c5c-8f66-48d9faa87b0a.jpg"
+                  "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/5fbfe475-2cd9-43d9-a72f-9b3d0ef7ed5a.webp"
                 },
                 "width": 2560,
                 "height": 1810,
@@ -3279,15 +3279,15 @@
           "subheading": "Musterwohnung",
           "images": [
             {
-              "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/7a73a572-ab78-4b2a-b923-d1f313dbbf30.png",
+              "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/35a46f43-815c-4a3c-8de6-500aa6c9809f.webp",
               "caption": "Wohnen & Essen"
             },
             {
-              "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/52c272a2-b023-4823-acf9-f894a097c3ea.png",
+              "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/4a2902f6-6b50-4894-854a-b4fa0c1c8d65.webp",
               "caption": "Offener Wohnbereich"
             },
             {
-              "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/1298f67d-7682-4d6c-ad2c-74a957b10056.png",
+              "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/a7a9c59c-8cef-480c-8343-546807028e68.webp",
               "caption": "Küche"
             }
           ]
@@ -3324,28 +3324,28 @@
           "description": "Das Mehrfamilienhaus in Erbach überzeugt durch seine attraktive Wohnlage, moderne Neubauplanung und insgesamt 22 Wohneinheiten – ideal für alle, die Wert auf zeitgemäßes Wohnen und eine gute Infrastruktur legen.",
           "mapEmbedUrl": "https://www.google.com/maps?q=Friedrich%20Ebert%20Stra%C3%9Fe%2016%2C%2064711%20Erbach&output=embed",
           "image": {
-            "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/957efddd-1d87-4a09-8b25-f583166440f2.png"
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/51751d24-e083-41cc-b5f2-9b59daaf4204.webp"
           }
         },
         "gallery": [
           {
-            "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/7a73a572-ab78-4b2a-b923-d1f313dbbf30.png",
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/35a46f43-815c-4a3c-8de6-500aa6c9809f.webp",
             "caption": "Wohnen & Essen"
           },
           {
-            "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/52c272a2-b023-4823-acf9-f894a097c3ea.png",
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/4a2902f6-6b50-4894-854a-b4fa0c1c8d65.webp",
             "caption": "Offener Wohnbereich"
           },
           {
-            "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/1298f67d-7682-4d6c-ad2c-74a957b10056.png",
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/a7a9c59c-8cef-480c-8343-546807028e68.webp",
             "caption": "Küche"
           },
           {
-            "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/013a4603-cf0d-4f05-8087-8c931ceb98e0.png",
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/d284506c-ed79-482c-ab94-483d3ca823ef.webp",
             "caption": "Schlafzimmer"
           },
           {
-            "url": "/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/63adb52b-7409-47bb-8f3f-8c5c22b046cd.png",
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/0da7fd0e-8fd1-42fb-8f18-6b6f71c0e479/8b26fb3e-e135-468a-9c8a-9ff48fd96b19.webp",
             "caption": "Barrierefreies Bad"
           }
         ],
@@ -4653,7 +4653,7 @@
           "subheadline": "22 Wohneinheiten zur Vermietung",
           "shortDescription": "Neubau eines MFH mit 22 Wohneinheiten",
           "image": {
-            "url": "/uploads/764a1f72-4006-42cc-bf15-2f928028fd1d/83fbb095-c9af-4b72-b9b9-dbff10385ff8.png"
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/764a1f72-4006-42cc-bf15-2f928028fd1d/b2e22ab1-63f4-49dc-9cd9-54126c5d9f6a.webp"
           }
         },
         "intro": {
@@ -5194,7 +5194,7 @@
           "ctaColor": "#6f9a3c",
           "badgeColor": "#b56a43",
           "font": "Poppins",
-          "logoUrl": "/uploads/50b98932-792a-413f-ad9e-25a08fbbd0cd/2d29d241-5694-491e-97ad-65ac044109e6.png"
+          "logoUrl": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/50b98932-792a-413f-ad9e-25a08fbbd0cd/990eaaa2-e850-440a-a66b-29ecbf4c4da3.webp"
         },
         "hero": {
           "headline": "Modernes Wohnen in Bobingen",
@@ -5217,7 +5217,7 @@
           "subheadline": "Eigentumswohnungen zu verkaufen",
           "shortDescription": "Neubau von 31 Reihenhäusern",
           "image": {
-            "url": "/uploads/50b98932-792a-413f-ad9e-25a08fbbd0cd/e0d65c55-72c7-480b-a6a5-12f09103581f.png"
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/50b98932-792a-413f-ad9e-25a08fbbd0cd/98b18a14-a978-44d6-b0b0-575edf26378a.webp"
           }
         },
         "intro": {
@@ -5589,7 +5589,7 @@
           "ctaColor": "#6f9a3c",
           "badgeColor": "#b56a43",
           "font": "Poppins",
-          "logoUrl": "/uploads/50b98932-792a-413f-ad9e-25a08fbbd0cd/2d29d241-5694-491e-97ad-65ac044109e6.png"
+          "logoUrl": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/50b98932-792a-413f-ad9e-25a08fbbd0cd/990eaaa2-e850-440a-a66b-29ecbf4c4da3.webp"
         },
         "hero": {
           "headline": "Modernes Wohnen in Bobingen",
@@ -5612,7 +5612,7 @@
           "subheadline": "Eigentumswohnungen zu verkaufen",
           "shortDescription": "Neubau von 31 Reihenhäusern",
           "image": {
-            "url": "/uploads/50b98932-792a-413f-ad9e-25a08fbbd0cd/e0d65c55-72c7-480b-a6a5-12f09103581f.png"
+            "url": "https://pub-9716a61ece5a4a55ac20595663607b3f.r2.dev/uploads/50b98932-792a-413f-ad9e-25a08fbbd0cd/98b18a14-a978-44d6-b0b0-575edf26378a.webp"
           }
         },
         "intro": {

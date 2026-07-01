@@ -47,7 +47,7 @@ export default function FloorNavigator({ nav }: { nav: Nav }) {
           <span className={styles.navHint}>{isRoot ? "Geschoss wählen" : art.zones.some((z) => z.target) ? "Wohnung wählen" : "Grundriss"}</span>
         </div>
         <div className={styles.navStage} key={fadeKey}>
-          <img src={art.image.url} alt={art.title} className={styles.navImage} />
+          <img src={art.image.url} alt={art.title} className={styles.navImage} loading="lazy" decoding="async" />
           <svg className={styles.navSvg} viewBox="0 0 100 100" preserveAspectRatio="none">
             {art.zones.filter((z) => z.points && z.points.length).map((z: NavZone) => (
               <polygon key={z.id} points={z.points!.map((p) => `${p.x},${p.y}`).join(" ")}

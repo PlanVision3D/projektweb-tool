@@ -122,7 +122,7 @@ async function scopedCss(): Promise<string> {
 function slider(images: MediaImage[], abs: (u?: string) => string, id: string) {
   if (!images.length) return "";
   const slides = images
-    .map((im, n) => `<img src="${esc(abs(im.url))}" alt="${esc(im.caption || im.alt || "")}" data-n="${n}" class="${cx("eslide", n === 0 && "eslideOn")}" />`)
+    .map((im, n) => `<img src="${esc(abs(im.url))}" alt="${esc(im.caption || im.alt || "")}" data-n="${n}" class="${cx("eslide", n === 0 && "eslideOn")}"${n === 0 ? "" : ' loading="lazy"'} decoding="async" />`)
     .join("");
   const multi = images.length > 1;
   const arrows = multi
@@ -229,7 +229,7 @@ export async function buildExportHtml(
           : "") +
         cta() +
       `</div>` +
-      `<div>${intro.images.length ? slider(intro.images, abs, `${rootId}-intro`) : hero.image ? `<img src="${esc(abs(hero.image.url))}" alt="" style="width:100%;border-radius:16px" />` : ""}</div>` +
+      `<div>${intro.images.length ? slider(intro.images, abs, `${rootId}-intro`) : hero.image ? `<img src="${esc(abs(hero.image.url))}" alt="" style="width:100%;border-radius:16px" loading="lazy" decoding="async" />` : ""}</div>` +
     `</div></section>`
   );
 
@@ -240,7 +240,7 @@ export async function buildExportHtml(
         usps
           .map((u, i) =>
             `<div class="${cx("uspBlock", i % 2 === 1 && "uspBlockRev")}">` +
-              `<div class="${cx("uspImgWrap")}">${u.image ? `<img src="${esc(abs(u.image.url))}" alt="${esc(u.title)}" />` : `<div style="height:540px;background:rgba(255,255,255,.1)"></div>`}</div>` +
+              `<div class="${cx("uspImgWrap")}">${u.image ? `<img src="${esc(abs(u.image.url))}" alt="${esc(u.title)}" loading="lazy" decoding="async" />` : `<div style="height:540px;background:rgba(255,255,255,.1)"></div>`}</div>` +
               `<div class="${cx("uspBody")}"><div class="${cx("uspNo")}">${String(i + 1).padStart(2, "0")}</div><h3>${esc(u.title)}</h3><p>${esc(u.text)}</p></div>` +
             `</div>`
           )
@@ -276,7 +276,7 @@ export async function buildExportHtml(
     parts.push(
       `<section class="${cx("section", "tintSection", "leafBg")}" id="wohnungsfinder"><div class="${cx("container")}">` +
         `<div class="${cx("head")}">${badge("Die Wohnungen")}<h2>Wohnungsfinder</h2>${units.intro ? `<p class="${cx("lead")}">${esc(units.intro)}</p>` : ""}</div>` +
-        `<div class="${cx("navWrap")}"><img class="${cx("navImage")}" src="${esc(abs(finderImg))}" alt="Gebäude" /></div>` +
+        `<div class="${cx("navWrap")}"><img class="${cx("navImage")}" src="${esc(abs(finderImg))}" alt="Gebäude" loading="lazy" decoding="async" /></div>` +
       `</div></section>`
     );
   }
@@ -377,7 +377,7 @@ export async function buildExportHtml(
     `<section class="${cx("section", "leafBg")}" id="faq"><div class="${cx("container")}">` +
       `<div class="${cx("head", "headLeft")}">${badge("Kontakt und FAQs")}<h2>Häufig gestellte Fragen</h2></div>` +
       `<div class="${cx("faqContactGrid")}" id="kontakt"><div class="${cx("contactCard")}">` +
-        (branding.logoUrl ? `<img class="${cx("contactLogo")}" src="${esc(abs(branding.logoUrl))}" alt="${esc(intro.projectName)}" />` : "") +
+        (branding.logoUrl ? `<img class="${cx("contactLogo")}" src="${esc(abs(branding.logoUrl))}" alt="${esc(intro.projectName)}" loading="lazy" decoding="async" />` : "") +
         `<ul class="${cx("contactList")}">` +
           (legal.companyName ? `<li><span class="${cx("contactIco")}">${icon("building")}</span>${esc(legal.companyName)}</li>` : "") +
           (contact.persons[0]?.name ? `<li><span class="${cx("contactIco")}">${icon("person")}</span>${esc(contact.persons[0].name)}</li>` : "") +

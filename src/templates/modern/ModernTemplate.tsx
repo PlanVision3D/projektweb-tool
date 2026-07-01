@@ -118,7 +118,7 @@ export default function ModernTemplate({ content, projectId, slug, basePath }: {
           <div className={styles.container}>
             {usps.map((u, i) => (
               <div key={i} className={`${styles.uspBlock} ${i % 2 === 1 ? styles.uspBlockRev : ""} ${styles.reveal}`}>
-                <div className={styles.uspImgWrap}>{u.image ? <img src={u.image.url} alt={u.title} /> : <div style={{ height: 540, background: "rgba(255,255,255,.1)" }} />}</div>
+                <div className={styles.uspImgWrap}>{u.image ? <img src={u.image.url} alt={u.title} loading="lazy" decoding="async" /> : <div style={{ height: 540, background: "rgba(255,255,255,.1)" }} />}</div>
                 <div className={styles.uspBody}>
                   <div className={styles.uspNo}>{String(i + 1).padStart(2, "0")}</div>
                   <h3>{u.title}</h3><p>{u.text}</p>
@@ -153,7 +153,7 @@ export default function ModernTemplate({ content, projectId, slug, basePath }: {
           <div className={styles.container}>
             <div className={`${styles.head} ${styles.reveal}`}><Badge>Die Wohnungen</Badge><h2>Wohnungsfinder</h2>{units.intro && <p className={styles.lead}>{units.intro}</p>}</div>
             <div className={styles.reveal}>
-              {units.navigator ? <FloorNavigator nav={units.navigator} /> : units.buildingImage && <div className={styles.navWrap}><img className={styles.navImage} src={units.buildingImage.url} alt="Gebäude" /></div>}
+              {units.navigator ? <FloorNavigator nav={units.navigator} /> : units.buildingImage && <div className={styles.navWrap}><img className={styles.navImage} src={units.buildingImage.url} alt="Gebäude" loading="lazy" decoding="async" /></div>}
             </div>
           </div>
         </section>
@@ -259,7 +259,7 @@ export default function ModernTemplate({ content, projectId, slug, basePath }: {
           <div className={`${styles.head} ${styles.headLeft} ${styles.reveal}`}><Badge>Kontakt und FAQs</Badge><h2>Häufig gestellte Fragen</h2></div>
           <div className={`${styles.faqContactGrid} ${styles.reveal}`} id="kontakt">
             <div className={styles.contactCard}>
-              {branding.logoUrl && <img className={styles.contactLogo} src={branding.logoUrl} alt={intro.projectName} />}
+              {branding.logoUrl && <img className={styles.contactLogo} src={branding.logoUrl} alt={intro.projectName} loading="lazy" decoding="async" />}
               <ul className={styles.contactList}>
                 {legal.companyName && <li><span className={styles.contactIco}><Icon name="building" /></span>{legal.companyName}</li>}
                 {contact.persons[0]?.name && <li><span className={styles.contactIco}><Icon name="person" /></span>{contact.persons[0].name}</li>}
@@ -278,7 +278,7 @@ export default function ModernTemplate({ content, projectId, slug, basePath }: {
       {/* TECHNISCHE UMSETZUNG */}
       <section className={`${styles.section} ${styles.techSection}`} style={{ padding: "80px 0" }}>
         <div className={`${styles.container} ${styles.techInner}`}>
-          {branding.agencyLogoUrl && <img className={styles.techStamp} src={branding.agencyLogoUrl} alt="PlanVision3D" />}
+          {branding.agencyLogoUrl && <img className={styles.techStamp} src={branding.agencyLogoUrl} alt="PlanVision3D" loading="lazy" decoding="async" />}
           <div className={styles.techText}>
             <div className={styles.techEyebrow}>Support</div>
             <h3>Technische Umsetzung</h3>
