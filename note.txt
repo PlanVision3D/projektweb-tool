@@ -1,0 +1,76 @@
+ERINNERUNG: Eigene Bild-Domain (CDN) später einrichten
+=======================================================
+
+WAS:
+Eine kleine, günstige Domain kaufen (z. B. planvision-media.uk ~5 $/Jahr
+oder planvision-media.com ~10 $/Jahr) DIREKT bei Cloudflare registrieren
+und als "Custom Domain" mit dem R2-Bucket (planvision-media) verbinden.
+Ziel-Adresse dann z. B.: https://cdn.planvision-media.com
+
+WARUM:
+Aktuell werden die Bilder über die kostenlose Cloudflare-Adresse
+"pub-9716a61ece5a4a55ac20595663607b3f.r2.dev" ausgeliefert. Diese ist:
+  - gedrosselt (Limit bei vielen gleichzeitigen Anfragen -> einzelne
+    Bilder können bei Traffic-Spitzen kurz nicht laden)
+  - ohne CDN-Caching (jedes Bild wird frisch aus dem Speicher geholt,
+    etwas langsamer, nicht am Besucher-Standort zwischengespeichert)
+Für aktuellen (geringen) Traffic egal. Eine eigene Domain bringt:
+volles Cloudflare-CDN, kein Limit, Edge-Caching weltweit, schneller.
+Egress bleibt in beiden Fällen gratis.
+
+WANN:
+Bevor echter Kunden-Traffic / Marketing-Kampagnen starten (Anzeigen,
+Newsletter, virale Posts) -> also genau dann, wenn viele Besucher
+gleichzeitig auf dieselbe Seite kommen könnten.
+
+WICHTIG:
+Die Firmendomain planvision3d.de NICHT dafür anfassen! An ihr hängen
+Google-Workspace-E-Mails (MX/SPF) und die Website -> ein DNS-Umzug wäre
+zu riskant fürs E-Mail-Setup. Deshalb bewusst eine SEPARATE Domain.
+
+UMSTELLUNG (ca. 15 Min., wenn es soweit ist):
+  1. Domain bei Cloudflare kaufen + in R2 als Custom Domain verbinden
+     (Bucket -> Settings -> Custom Domains -> cdn.<domain> hinzufügen).
+  2. R2_PUBLIC_URL auf die neue Domain umstellen -> lokal in .env.local
+     UND auf Vercel (Settings -> Environment Variables), dann neu deployen.
+  3. Vorhandene Bild-URLs in der DB umschreiben: nur den Domain-Teil
+     ersetzen (pub-...r2.dev  ->  cdn.<domain>). Die Bilder bleiben im
+     SELBEN Bucket, kein Neu-Upload. (Migrations-Skript nutzen/anpassen:
+     scripts/migrate-images-to-r2.mjs)
+
+Stand jetzt (bereits fertig eingerichtet):
+Bilder auf R2 + WebP-Kompression, ISR-Caching der öffentlichen Seiten,
+Lazy-Loading, Altbilder migriert. Nur die eigene Domain ist noch offen
+(dieser Zettel).
+
+
+ERINNERUNG 2: Kostendeckel bei Vercel einrichten (Schutz vor Überraschungen)
+============================================================================
+
+WAS:
+Beim Wechsel auf Vercel PRO als Allererstes das "Spend Management"
+aktivieren: Settings -> Billing -> Spend Management.
+  - Maximalen Monatsbetrag festlegen (z. B. 50 $).
+  - Benachrichtigungen bei 50/75/90 % einschalten (E-Mail).
+  - Aktion bei 100 % wählen:
+      * "Nur benachrichtigen" -> Seite bleibt online, ich entscheide
+        selbst, ob ich das Limit anhebe (empfohlen bei viralem Traffic,
+        damit die Seite nicht offline geht).
+      * "Projekt pausieren" -> harte Kostenbremse, Seite geht offline,
+        keine weiteren Kosten.
+
+WARUM:
+Schutz vor Überraschungsrechnung, falls eine Seite unerwartet viral geht.
+Kosten steigen nur, wenn ich es bewusst erlaube.
+
+WANN:
+Direkt beim Umstieg von Hobby auf Pro (nötig, sobald echte/kommerzielle
+Kunden dazukommen - Hobby ist offiziell nur für privat und kann nicht
+abrechnen, sondern drosselt/pausiert nur).
+
+BERUHIGUNG (Einordnung):
+Durch R2 (Bilder = 0 €, zählen nicht auf Vercel) + ISR-Caching (HTML aus
+dem Cache, keine Server-Ausführung pro Besuch) kostet ein Seitenaufruf
+Vercel nur noch ~300 KB (HTML/JS). Selbst 1 Mio. Besucher/Nacht ~ 300 GB,
+also DEUTLICH unter dem 1-TB-Limit von Pro. Ein Viral-Abend ist damit
+kaum gefährlich - der teure Teil (Bilder) läuft ja über R2.
