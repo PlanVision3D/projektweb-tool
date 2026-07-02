@@ -12,6 +12,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1077.0",
     "firebase-admin": "^14.0.0",
+    "lucide-react": "^1.23.0",
     "next": "14.2.15",
     "react": "18.3.1",
     "react-dom": "18.3.1",

@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Plus, ExternalLink, LogOut } from "lucide-react";
 
 export default function TopBar() {
   const router = useRouter();
@@ -18,17 +19,10 @@ export default function TopBar() {
       <nav>
         <Link href="/">Projekte</Link>
         <Link href="/kunden">Kunden</Link>
-        <Link href="/projects/new">+ Neues Projekt</Link>
-        <a href="/kunde/login" target="_blank" rel="noreferrer">Kundenbereich ↗</a>
-        <button
-          onClick={logout}
-          style={{
-            marginLeft: 6, background: "var(--card)", border: "1px solid var(--border)",
-            color: "var(--muted-foreground)", padding: "7px 14px", borderRadius: 8, cursor: "pointer",
-            fontSize: 13, fontWeight: 600, fontFamily: "Poppins", transition: ".15s",
-          }}
-        >
-          Abmelden
+        <Link href="/projects/new"><Plus size={16} /> Neues Projekt</Link>
+        <a href="/kunde/login" target="_blank" rel="noreferrer">Kundenbereich <ExternalLink size={14} /></a>
+        <button onClick={logout} className="btn btn-ghost btn-sm" style={{ marginLeft: 6 }}>
+          <LogOut size={15} /> Abmelden
         </button>
       </nav>
     </header>

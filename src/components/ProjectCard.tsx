@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
+import { MoreHorizontal, Pencil, Globe, Inbox, Users, Link2, Trash2, User, AlertTriangle } from "lucide-react";
 
 export interface ProjectCardData {
   id: string;
@@ -77,15 +78,15 @@ export default function ProjectCard({ p }: { p: ProjectCardData }) {
 
   return (
     <div className="card project-card" style={{ position: "relative", opacity: busy ? 0.6 : 1 }}>
-      <button className="card-menu-btn" onClick={() => setOpen((o) => !o)} aria-label="Menü" title="Aktionen">⋯</button>
+      <button className="card-menu-btn" onClick={() => setOpen((o) => !o)} aria-label="Menü" title="Aktionen"><MoreHorizontal size={18} /></button>
       {open && (
         <div className="card-menu" ref={ref}>
-          <button onClick={() => router.push(`/projects/${p.id}`)}>✏️ Bearbeiten</button>
-          {p.published && <a href={`/site/${p.slug}`} target="_blank" rel="noreferrer">🌐 Live-Seite öffnen</a>}
-          <button onClick={() => router.push(`/projects/${p.id}/leads`)}>📥 Leads ansehen ({p.leadsCount})</button>
-          <button onClick={openShare}>👥 Kunden zuweisen</button>
-          <button onClick={openDomain}>🔗 Domain verknüpfen</button>
-          <button className="danger" onClick={remove}>🗑️ Löschen</button>
+          <button onClick={() => router.push(`/projects/${p.id}`)}><Pencil size={16} /> Bearbeiten</button>
+          {p.published && <a href={`/site/${p.slug}`} target="_blank" rel="noreferrer"><Globe size={16} /> Live-Seite öffnen</a>}
+          <button onClick={() => router.push(`/projects/${p.id}/leads`)}><Inbox size={16} /> Leads ansehen ({p.leadsCount})</button>
+          <button onClick={openShare}><Users size={16} /> Kunden zuweisen</button>
+          <button onClick={openDomain}><Link2 size={16} /> Domain verknüpfen</button>
+          <button className="danger" onClick={remove}><Trash2 size={16} /> Löschen</button>
         </div>
       )}
       <div onClick={() => router.push(`/projects/${p.id}`)} style={{ cursor: "pointer" }}>
@@ -97,15 +98,19 @@ export default function ProjectCard({ p }: { p: ProjectCardData }) {
         <p className="muted" style={{ margin: "6px 0 8px" }}>{p.unitsCount} Wohneinheiten · {p.leadsCount} Leads · {p.template}</p>
         {p.customDomain && (
           <p style={{ margin: "0 0 8px", fontSize: ".82rem" }}>
-            <span className="chip" style={{ background: "#e7f0e0", color: "#3c5a1f" }}>🔗 {p.customDomain}</span>
+            <span className="chip"><Link2 size={12} /> {p.customDomain}</span>
           </p>
         )}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
           {p.assignedCustomerEmails.length === 0
             ? <span className="muted" style={{ fontSize: ".78rem" }}>Keinem Kunden zugewiesen</span>
-            : p.assignedCustomerEmails.map((e) => <span key={e} className="chip">👤 {e}</span>)}
+            : p.assignedCustomerEmails.map((e) => <span key={e} className="chip"><User size={12} /> {e}</span>)}
         </div>
-        {p.warningsCount > 0 && <p className="muted" style={{ color: "#b26a00", marginTop: 6 }}>⚠ {p.warningsCount} offene Datenpunkte</p>}
+        {p.warningsCount > 0 && (
+          <p className="muted" style={{ color: "var(--warning)", marginTop: 6, display: "inline-flex", alignItems: "center", gap: 5 }}>
+            <AlertTriangle size={14} /> {p.warningsCount} offene Datenpunkte
+          </p>
+        )}
       </div>
 
       {shareOpen && typeof document !== "undefined" && createPortal(
@@ -146,11 +151,15 @@ export default function ProjectCard({ p }: { p: ProjectCardData }) {
               value={domain}
               onChange={(e) => setDomain(e.target.value)}
               placeholder="z.B. suedstadt-erbach.de"
-              style={{ width: "100%", padding: "11px 13px", borderRadius: 8, border: domainErr ? "2px solid #ef4444" : "2px solid #e5e7eb", fontSize: 15, boxSizing: "border-box", outline: "none" }}
+              style={domainErr ? { borderColor: "var(--destructive)" } : undefined}
             />
-            {domainErr && <p style={{ color: "#ef4444", fontSize: 13, margin: "8px 0 0" }}>⚠ {domainErr}</p>}
-            <div style={{ background: "#f4f7fb", borderRadius: 8, padding: "12px 14px", margin: "14px 0 0", fontSize: ".82rem", lineHeight: 1.5, color: "#475569" }}>
-              <strong>So geht's:</strong>
+            {domainErr && (
+              <p style={{ color: "var(--destructive)", fontSize: 13, margin: "8px 0 0", display: "inline-flex", alignItems: "center", gap: 5 }}>
+                <AlertTriangle size={14} /> {domainErr}
+              </p>
+            )}
+            <div style={{ background: "var(--secondary)", borderRadius: 8, padding: "12px 14px", margin: "14px 0 0", fontSize: ".82rem", lineHeight: 1.5, color: "var(--muted-foreground)" }}>
+              <strong style={{ color: "var(--foreground)" }}>So geht&apos;s:</strong>
               <ol style={{ margin: "6px 0 0", paddingLeft: 18 }}>
                 <li>Domain hier eintragen &amp; speichern</li>
                 <li>Domain in Vercel unter <em>Settings → Domains</em> hinzufügen</li>

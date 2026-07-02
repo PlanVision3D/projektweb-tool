@@ -5,6 +5,11 @@ import type { Project, ProjectContent, Unit } from "@/types/content";
 import { TEMPLATES } from "@/templates/registry";
 import { Text, Area, Color, Select, Section, ImageField, RowActions } from "./fields";
 import Icon, { ICON_OPTIONS, FEATURE_PRESETS } from "@/templates/modern/icons";
+import {
+  ArrowLeft, ChevronRight, Inbox, Download, Trash2, RefreshCw, ExternalLink, Check, AlertTriangle,
+  Building2, Image as ImageIcon, FileText, Award, Sparkles, Table, Images, View,
+  MapPin, ListChecks, HelpCircle, Contact, Search,
+} from "lucide-react";
 
 const STATUS_OPTIONS = [
   { value: "verfuegbar", label: "Verfügbar" },
@@ -130,34 +135,51 @@ export default function AdminEditor({ project, canDelete = true, canExport = tru
     });
     const res = await fetch(`/api/projects/${project.id}/publish`, { method: "POST" });
     setPublishing(false);
-    if (res.ok) { setDirty(false); setPublished(true); setPreviewKey((k) => k + 1); flash("✅ Veröffentlicht! Die Live-Seite ist aktualisiert."); }
+    if (res.ok) { setDirty(false); setPublished(true); setPreviewKey((k) => k + 1); flash("Veröffentlicht! Die Live-Seite ist aktualisiert."); }
     else flash("Fehler beim Veröffentlichen.");
   }
 
   return (
-    <div style={{ display: "flex", height: "100vh", overflow: "hidden" }}>
-      {/* LEFT: Editor */}
+    <div style={{ display: "flex", flexDirection: "column", height: "100vh", overflow: "hidden" }}>
       {resizing && <div style={{ position: "fixed", inset: 0, zIndex: 9999, cursor: "col-resize" }} />}
-      <aside ref={asideRef} style={{ width: panelW, flexShrink: 0, borderRight: "1px solid var(--tool-line)", display: "flex", flexDirection: "column", background: "var(--tool-soft)" }}>
-        <div style={{ padding: "14px 16px", background: "var(--tool-bg)", color: "#fff", display: "flex", alignItems: "center", gap: 10 }}>
-          <Link href={backHref} style={{ color: "#c7d0de", textDecoration: "none", fontSize: ".85rem" }}>← Zurück</Link>
-          <strong style={{ fontFamily: "Poppins", fontSize: ".95rem" }}>{name}</strong>
-          {published ? <span className="pill pill-live">Live</span> : <span className="pill pill-draft">Entwurf</span>}
-          <Link href={leadsLink} style={{ marginLeft: "auto", color: "#c7d0de", textDecoration: "none", fontSize: ".85rem" }}>📥 Leads</Link>
-          {canExport && <button onClick={openExport} title="Als HTML für WordPress / Elementor exportieren" style={{ background: "transparent", border: "1px solid #3a5a6b", color: "#9ad0e0", borderRadius: 6, padding: ".25rem .6rem", cursor: "pointer", fontSize: ".8rem" }}>⤓ Export</button>}
-          {canDelete && <button onClick={removeProject} title="Projekt löschen" style={{ background: "transparent", border: "1px solid #6b3a3a", color: "#ff9a9a", borderRadius: 6, padding: ".25rem .6rem", cursor: "pointer", fontSize: ".8rem" }}>Löschen</button>}
-        </div>
 
-        <div style={{ flex: 1, overflowY: "auto", padding: 14 }}>
+      {/* EINHEITLICHE TOPBAR (über beide Bereiche) */}
+      <header style={{ height: 60, flexShrink: 0, display: "flex", alignItems: "center", gap: 12, padding: "0 22px", background: "var(--card)", borderBottom: "1px solid var(--border)" }}>
+        <Link href={backHref} className="muted" style={{ display: "inline-flex", alignItems: "center", gap: 6, textDecoration: "none", fontSize: ".88rem", flexShrink: 0 }}>
+          <ArrowLeft size={16} /> Projekte
+        </Link>
+        <ChevronRight size={15} style={{ color: "var(--muted-foreground)", opacity: .45, flexShrink: 0 }} />
+        <strong style={{ fontFamily: "Poppins", fontSize: "1rem", color: "var(--foreground)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: 280 }}>{name}</strong>
+        {published ? <span className="pill pill-live">Live</span> : <span className="pill pill-draft">Entwurf</span>}
+
+        <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 9 }}>
+          <span className="muted" style={{ fontSize: ".8rem", display: "inline-flex", alignItems: "center", gap: 7, marginRight: 2 }}>
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: dirty ? "var(--warning)" : "var(--success)", flexShrink: 0 }} />
+            {dirty ? "Ungespeichert" : "Gespeichert"}
+          </span>
+          <Link href={leadsLink} className="btn btn-ghost btn-sm"><Inbox size={15} /> Leads</Link>
+          {canExport && <button onClick={openExport} className="btn btn-ghost btn-sm" title="Als HTML für WordPress / Elementor exportieren"><Download size={15} /> Export</button>}
+          {canDelete && <button onClick={removeProject} className="btn btn-danger btn-sm" title="Projekt löschen"><Trash2 size={15} /></button>}
+          <span style={{ width: 1, height: 26, background: "var(--border)", margin: "0 3px" }} />
+          <button className="btn btn-ghost btn-sm" onClick={save} disabled={saving || !dirty}>{saving ? "Speichert…" : "Speichern"}</button>
+          <button className="btn btn-primary btn-sm" onClick={publish} disabled={publishing}>{publishing ? "Veröffentlicht…" : "Veröffentlichen"}</button>
+        </div>
+      </header>
+
+      {/* KÖRPER: Editor + Vorschau */}
+      <div style={{ display: "flex", flex: 1, overflow: "hidden", position: "relative" }}>
+      <aside ref={asideRef} style={{ width: panelW, flexShrink: 0, borderRight: "1px solid var(--border)", display: "flex", flexDirection: "column", background: "var(--tool-soft)" }}>
+        <div style={{ flex: 1, overflowY: "auto", padding: "16px 16px 28px" }}>
           {project.warnings.length > 0 && (
             <div className="warn-box">
-              <h4>⚠ {project.warnings.length} Datenpunkte prüfen</h4>
+              <h4 style={{ display: "flex", alignItems: "center", gap: 6 }}><AlertTriangle size={15} /> {project.warnings.length} Datenpunkte prüfen</h4>
               <ul>{project.warnings.map((w, i) => <li key={i}>{w.label}: {w.message}</li>)}</ul>
             </div>
           )}
 
+          <Group label="Branding" first>
           {/* Projektdaten / Branding */}
-          <Section title="① Projektdaten & Branding" defaultOpen>
+          <Section title="Projektdaten & Branding" icon={<Building2 size={16} />} defaultOpen>
             <Text label="Projektname (intern)" value={name} onChange={(v) => { setName(v); setDirty(true); }} />
             <Select label="Template" value={draft.template}
               options={TEMPLATES.map((t) => ({ value: t.id, label: t.available ? t.name : `${t.name} (bald)` }))}
@@ -167,8 +189,11 @@ export default function AdminEditor({ project, canDelete = true, canExport = tru
             <ImageField label="Logo (optional)" url={draft.branding.logoUrl} projectId={project.id} onChange={(url) => patch((d) => { d.branding.logoUrl = url; })} />
           </Section>
 
+          </Group>
+
+          <Group label="Hauptbereiche">
           {/* Hero */}
-          <Section title="② Hero-Bereich">
+          <Section title="Hero-Bereich" icon={<ImageIcon size={16} />}>
             <ImageField label="Hauptbild" url={draft.hero.image?.url} projectId={project.id} onChange={(url) => patch((d) => { d.hero.image = { url }; })} />
             <Text label="Label / Badge" value={draft.hero.label || ""} onChange={(v) => patch((d) => { d.hero.label = v; })} />
             <Text label="Hauptüberschrift" value={draft.hero.headline} onChange={(v) => patch((d) => { d.hero.headline = v; })} />
@@ -182,7 +207,7 @@ export default function AdminEditor({ project, canDelete = true, canExport = tru
           </Section>
 
           {/* Intro */}
-          <Section title="③ Projektübersicht">
+          <Section title="Projektübersicht" icon={<FileText size={16} />}>
             <Text label="Projektname (Anzeige)" value={draft.intro.projectName} onChange={(v) => patch((d) => { d.intro.projectName = v; })} />
             <ListEditor label="Textabsätze" items={draft.intro.paragraphs}
               onAdd={() => patch((d) => { d.intro.paragraphs.push(""); })}
@@ -205,7 +230,7 @@ export default function AdminEditor({ project, canDelete = true, canExport = tru
           </Section>
 
           {/* USPs */}
-          <Section title="④ Alleinstellungsmerkmale">
+          <Section title="Alleinstellungsmerkmale" icon={<Award size={16} />}>
             <ListEditor label="USP-Karten" items={draft.usps}
               onAdd={() => patch((d) => { d.usps.push({ title: "", text: "" }); })}
               onRemove={(i) => patch((d) => { d.usps.splice(i, 1); })}
@@ -217,7 +242,7 @@ export default function AdminEditor({ project, canDelete = true, canExport = tru
           </Section>
 
           {/* Features */}
-          <Section title="⑤ Besonderheiten / Highlights" badge={`${draft.features.length}`}>
+          <Section title="Besonderheiten / Highlights" icon={<Sparkles size={16} />} badge={`${draft.features.length}`}>
             <label className="field">
               <span>Vorlage einfügen</span>
               <select value="" onChange={(e) => { const p = FEATURE_PRESETS.find((x) => x.title === e.target.value); if (p) patch((d) => { d.features.push({ title: p.title, text: p.text, iconKey: p.iconKey }); }); }}>
@@ -243,7 +268,7 @@ export default function AdminEditor({ project, canDelete = true, canExport = tru
           </Section>
 
           {/* Units */}
-          <Section title="⑥ Wohnungen / Preise / Status" badge={`${draft.units.items.length}`}>
+          <Section title="Wohnungen / Preise / Status" icon={<Table size={16} />} badge={`${draft.units.items.length}`}>
             <ImageField label="Gebäude-Bild (klickbarer Wohnungsfinder)" url={draft.units.buildingImage?.url} projectId={project.id} onChange={(url) => patch((d) => { d.units.buildingImage = { url }; })} />
             <Area label="Intro-Text über dem Finder" value={draft.units.intro || ""} onChange={(v) => patch((d) => { d.units.intro = v; })} />
             <ListEditor label="Geschoss-Grundrisse" items={draft.units.floorPlans}
@@ -275,7 +300,7 @@ export default function AdminEditor({ project, canDelete = true, canExport = tru
           </Section>
 
           {/* Gallery */}
-          <Section title="⑦ Galerie / Visualisierungen" badge={`${draft.gallery.length}`}>
+          <Section title="Galerie / Visualisierungen" icon={<Images size={16} />} badge={`${draft.gallery.length}`}>
             <ListEditor label="Bilder" items={draft.gallery}
               onAdd={() => patch((d) => { d.gallery.push({ url: "" }); })}
               onRemove={(i) => patch((d) => { d.gallery.splice(i, 1); })}
@@ -286,7 +311,7 @@ export default function AdminEditor({ project, canDelete = true, canExport = tru
           </Section>
 
           {/* Virtueller Rundgang */}
-          <Section title="⑦ᵇ Virtueller Rundgang" badge={`${draft.virtualTour.images.length}`}>
+          <Section title="Virtueller Rundgang" icon={<View size={16} />} badge={`${draft.virtualTour.images.length}`}>
             <Text label="Überschrift" value={draft.virtualTour.heading} onChange={(v) => patch((d) => { d.virtualTour.heading = v; })} />
             <Text label="Unterüberschrift" value={draft.virtualTour.subheading || ""} onChange={(v) => patch((d) => { d.virtualTour.subheading = v; })} />
             <Text label="360°/Matterport Embed-URL (optional)" value={draft.virtualTour.embedUrl || ""} onChange={(v) => patch((d) => { d.virtualTour.embedUrl = v; })} />
@@ -300,7 +325,7 @@ export default function AdminEditor({ project, canDelete = true, canExport = tru
           </Section>
 
           {/* Location */}
-          <Section title="⑧ Lage">
+          <Section title="Lage" icon={<MapPin size={16} />}>
             <Text label="Adresse" value={draft.location.address} onChange={(v) => patch((d) => { d.location.address = v; })} />
             <Area label="Standortbeschreibung" value={draft.location.description || ""} onChange={(v) => patch((d) => { d.location.description = v; })} />
             <Text label="Karten-Embed-URL" value={draft.location.mapEmbedUrl || ""} onChange={(v) => patch((d) => { d.location.mapEmbedUrl = v; })} />
@@ -313,8 +338,11 @@ export default function AdminEditor({ project, canDelete = true, canExport = tru
               </div>)} />
           </Section>
 
+          </Group>
+
+          <Group label="Weitere Inhalte">
           {/* Process */}
-          <Section title="⑨ Ablauf">
+          <Section title="Ablauf" icon={<ListChecks size={16} />}>
             <ListEditor label="Schritte" items={draft.process}
               onAdd={() => patch((d) => { d.process.push({ title: "", description: "" }); })}
               onRemove={(i) => patch((d) => { d.process.splice(i, 1); })}
@@ -325,7 +353,7 @@ export default function AdminEditor({ project, canDelete = true, canExport = tru
           </Section>
 
           {/* FAQ */}
-          <Section title="⑩ FAQ" badge={`${draft.faq.length}`}>
+          <Section title="FAQ" icon={<HelpCircle size={16} />} badge={`${draft.faq.length}`}>
             <ListEditor label="Fragen" items={draft.faq}
               onAdd={() => patch((d) => { d.faq.push({ question: "", answer: "" }); })}
               onRemove={(i) => patch((d) => { d.faq.splice(i, 1); })}
@@ -336,7 +364,7 @@ export default function AdminEditor({ project, canDelete = true, canExport = tru
           </Section>
 
           {/* Contact */}
-          <Section title="⑪ Ansprechpartner & Kontakt">
+          <Section title="Ansprechpartner & Kontakt" icon={<Contact size={16} />}>
             <ListEditor label="Ansprechpartner" items={draft.contact.persons}
               onAdd={() => patch((d) => { d.contact.persons.push({ name: "" }); })}
               onRemove={(i) => patch((d) => { d.contact.persons.splice(i, 1); })}
@@ -351,8 +379,11 @@ export default function AdminEditor({ project, canDelete = true, canExport = tru
             <Text label="Empfänger-E-Mail (Leads)" value={draft.contact.recipientEmails[0] || ""} onChange={(v) => patch((d) => { d.contact.recipientEmails = v ? [v] : []; })} />
           </Section>
 
+          </Group>
+
+          <Group label="SEO & Rechtliches">
           {/* SEO + Legal */}
-          <Section title="⑫ SEO & Impressum">
+          <Section title="SEO & Impressum" icon={<Search size={16} />}>
             <Text label="SEO-Titel" value={draft.seo.title} onChange={(v) => patch((d) => { d.seo.title = v; })} />
             <Area label="SEO-Beschreibung" value={draft.seo.description} onChange={(v) => patch((d) => { d.seo.description = v; })} />
             <hr style={{ border: "none", borderTop: "1px solid var(--tool-line)", margin: "12px 0" }} />
@@ -362,13 +393,7 @@ export default function AdminEditor({ project, canDelete = true, canExport = tru
             <Text label="Vertreten durch" value={draft.legal.representedBy || ""} onChange={(v) => patch((d) => { d.legal.representedBy = v; })} />
             <Text label="USt-IdNr." value={draft.legal.vatId || ""} onChange={(v) => patch((d) => { d.legal.vatId = v; })} />
           </Section>
-        </div>
-
-        {/* Toolbar */}
-        <div style={{ padding: 14, borderTop: "1px solid var(--tool-line)", background: "#fff", display: "flex", gap: 8, alignItems: "center" }}>
-          <span className="muted" style={{ fontSize: ".8rem" }}>{dirty ? "● Ungespeicherte Änderungen" : "Alles gespeichert"}</span>
-          <button className="btn btn-ghost" style={{ marginLeft: "auto" }} onClick={save} disabled={saving || !dirty}>{saving ? "Speichert…" : "Speichern"}</button>
-          <button className="btn btn-primary" onClick={publish} disabled={publishing}>{publishing ? "Veröffentlicht…" : "Veröffentlichen"}</button>
+          </Group>
         </div>
       </aside>
 
@@ -378,15 +403,17 @@ export default function AdminEditor({ project, canDelete = true, canExport = tru
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 4, height: 44, borderRadius: 4, background: "#9aa3b2" }} />
       </div>
 
-      {/* RIGHT: Live preview */}
-      <main style={{ flex: 1, minWidth: 280, display: "flex", flexDirection: "column", background: "#e9edf3" }}>
-        <div style={{ height: 46, display: "flex", alignItems: "center", gap: 12, padding: "0 16px", borderBottom: "1px solid var(--tool-line)", background: "#fff" }}>
-          <strong style={{ fontFamily: "Poppins", fontSize: ".85rem" }}>Live-Vorschau (Entwurf)</strong>
-          <button className="btn btn-ghost" style={{ padding: ".3rem .7rem", fontSize: ".8rem" }} onClick={() => setPreviewKey((k) => k + 1)}>↻ Aktualisieren</button>
-          {published && <Link className="btn btn-gold" style={{ padding: ".3rem .7rem", fontSize: ".8rem", marginLeft: "auto" }} href={`/site/${project.slug}`} target="_blank">Live-Seite öffnen ↗</Link>}
+      {/* RECHTS: Live-Vorschau */}
+      <main style={{ flex: 1, minWidth: 280, display: "flex", flexDirection: "column", background: "var(--muted)" }}>
+        <div style={{ height: 52, flexShrink: 0, display: "flex", alignItems: "center", gap: 12, padding: "0 20px", borderBottom: "1px solid var(--border)", background: "var(--card)" }}>
+          <strong style={{ fontFamily: "Poppins", fontSize: ".86rem", color: "var(--foreground)" }}>Live-Vorschau</strong>
+          <span className="muted" style={{ fontSize: ".78rem" }}>{dirty ? "Entwurf · ungespeichert" : "Entwurf"}</span>
+          <button className="btn btn-ghost btn-sm" style={{ marginLeft: "auto" }} onClick={() => setPreviewKey((k) => k + 1)}><RefreshCw size={14} /> Aktualisieren</button>
+          {published && <Link className="btn btn-gold btn-sm" href={`/site/${project.slug}`} target="_blank">Live-Seite öffnen <ExternalLink size={14} /></Link>}
         </div>
         <iframe key={previewKey} src={`/preview/${project.id}?v=${previewKey}`} style={{ flex: 1, border: "none", width: "100%" }} title="Vorschau" />
       </main>
+      </div>
 
       {exportOpen && (
         <div className="modal-backdrop" onClick={() => setExportOpen(false)}>
@@ -409,7 +436,7 @@ export default function AdminEditor({ project, canDelete = true, canExport = tru
             />
 
             <div style={{ display: "flex", gap: 8, marginTop: 14, alignItems: "center", flexWrap: "wrap" }}>
-              <button className="btn btn-primary" onClick={copyExport} disabled={exportBusy || !exportHtml}>{copied ? "✓ Kopiert" : "Code kopieren"}</button>
+              <button className="btn btn-primary" onClick={copyExport} disabled={exportBusy || !exportHtml}>{copied ? <><Check size={15} /> Kopiert</> : "Code kopieren"}</button>
               <button className="btn btn-ghost" onClick={downloadExport} disabled={exportBusy || !exportHtml}>Als .html herunterladen</button>
               <button className="btn btn-ghost" style={{ marginLeft: "auto" }} onClick={() => setExportOpen(false)}>Schließen</button>
             </div>
@@ -421,9 +448,27 @@ export default function AdminEditor({ project, canDelete = true, canExport = tru
       )}
 
       {toast && (
-        <div style={{ position: "fixed", bottom: 20, left: "50%", transform: "translateX(-50%)", background: "var(--tool-bg)", color: "#fff", padding: "10px 18px", borderRadius: 8, fontSize: ".9rem", boxShadow: "0 8px 24px rgba(0,0,0,.25)", zIndex: 50 }}>{toast}</div>
+        <div style={{ position: "fixed", bottom: 20, left: "50%", transform: "translateX(-50%)", background: "var(--foreground)", color: "var(--card)", padding: "10px 18px", borderRadius: 8, fontSize: ".9rem", boxShadow: "var(--shadow-lg)", zIndex: 50 }}>{toast}</div>
       )}
     </div>
+  );
+}
+
+function GroupLabel({ children, first }: { children: React.ReactNode; first?: boolean }) {
+  return (
+    <div style={{ fontSize: ".7rem", fontWeight: 700, letterSpacing: ".05em", textTransform: "uppercase", color: "var(--muted-foreground)", margin: `${first ? 2 : 22}px 6px 9px`, userSelect: "none" }}>
+      {children}
+    </div>
+  );
+}
+
+/** Eine Gruppe = Label + EINE weiße Karte, in der die Sektionen als Zeilen liegen. */
+function Group({ label, first, children }: { label: string; first?: boolean; children: React.ReactNode }) {
+  return (
+    <>
+      <GroupLabel first={first}>{label}</GroupLabel>
+      <div className="section-group">{children}</div>
+    </>
   );
 }
 

@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
+import { ChevronRight } from "lucide-react";
 
 const IMG_EXT = [".png", ".jpg", ".jpeg", ".svg", ".webp", ".gif"];
 
@@ -50,19 +51,20 @@ export function Select({ label, value, options, onChange }: {
   );
 }
 
-export function Section({ title, children, defaultOpen = false, badge }: {
-  title: string; children: React.ReactNode; defaultOpen?: boolean; badge?: string;
+export function Section({ title, children, defaultOpen = false, badge, icon }: {
+  title: string; children: React.ReactNode; defaultOpen?: boolean; badge?: string; icon?: React.ReactNode;
 }) {
   const [open, setOpen] = useState(defaultOpen);
   return (
-    <div style={{ border: "1px solid var(--tool-line)", borderRadius: 10, marginBottom: 10, background: "#fff", overflow: "hidden" }}>
-      <button type="button" onClick={() => setOpen(!open)}
-        style={{ width: "100%", display: "flex", alignItems: "center", gap: 8, padding: "12px 14px", background: open ? "#f8fafc" : "#fff", border: "none", cursor: "pointer", fontFamily: "Poppins", fontWeight: 600, fontSize: ".92rem", textAlign: "left" }}>
-        <span style={{ transform: open ? "rotate(90deg)" : "none", transition: ".15s", color: "var(--tool-muted)" }}>▶</span>
-        {title}
-        {badge && <span className="pill pill-draft" style={{ marginLeft: "auto" }}>{badge}</span>}
+    <div className="section-row" style={{ background: open ? "var(--secondary)" : "transparent", transition: "background .12s" }}>
+      <button type="button" onClick={() => setOpen(!open)} className="section-head"
+        style={{ width: "100%", display: "flex", alignItems: "center", gap: 11, padding: "13px 15px", background: "transparent", border: "none", cursor: "pointer", fontFamily: "Poppins", fontWeight: 600, fontSize: ".9rem", color: "var(--foreground)", textAlign: "left" }}>
+        {icon && <span style={{ display: "inline-flex", color: open ? "var(--primary)" : "var(--muted-foreground)", flexShrink: 0, transition: ".12s" }}>{icon}</span>}
+        <span style={{ flex: 1 }}>{title}</span>
+        {badge && <span style={{ fontSize: ".72rem", fontWeight: 600, color: "var(--muted-foreground)", background: "var(--muted)", borderRadius: 20, padding: ".05rem .5rem", minWidth: 22, textAlign: "center", flexShrink: 0 }}>{badge}</span>}
+        <ChevronRight size={16} style={{ color: "var(--muted-foreground)", transform: open ? "rotate(90deg)" : "none", transition: ".15s", flexShrink: 0 }} />
       </button>
-      {open && <div style={{ padding: "14px 16px", borderTop: "1px solid var(--tool-line)" }}>{children}</div>}
+      {open && <div style={{ padding: "8px 15px 16px", background: "var(--card)", borderTop: "1px solid var(--border)" }}>{children}</div>}
     </div>
   );
 }

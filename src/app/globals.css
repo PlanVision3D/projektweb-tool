@@ -43,6 +43,9 @@
   --tool-accent: var(--primary);
   --tool-accent-2: oklch(0.7332 0.0876 78.0); /* warmes Gold */
   --tool-soft: var(--secondary);
+  --success: oklch(0.5500 0.1200 150);      /* gedämpftes Grün */
+  --success-soft: oklch(0.9300 0.0600 145);
+  --warning: oklch(0.6500 0.1300 65);       /* warmes Amber */
 
   font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
@@ -53,6 +56,8 @@ body {
   color: var(--foreground);
   background: var(--background);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
 }
 
 /* Warme, dezente Scrollbar */
@@ -83,8 +88,9 @@ h1, h2, h3 { font-family: "Poppins", ui-sans-serif, sans-serif; letter-spacing: 
 .topbar .brand { font-family: "Poppins"; font-weight: 700; font-size: 1.1rem; color: var(--foreground); display: inline-flex; align-items: center; gap: 2px; }
 .topbar .brand span { color: var(--primary); }
 .topbar nav { margin-left: auto; display: flex; align-items: center; gap: 6px; font-size: .9rem; }
-.topbar nav a { color: var(--muted-foreground); text-decoration: none; padding: 7px 12px; border-radius: 8px; transition: .15s; font-weight: 500; }
+.topbar nav a { display: inline-flex; align-items: center; gap: 5px; color: var(--muted-foreground); text-decoration: none; padding: 7px 12px; border-radius: 8px; transition: .15s; font-weight: 500; }
 .topbar nav a:hover { color: var(--foreground); background: var(--secondary); }
+.topbar nav a svg, .btn svg, .card-menu button svg, .card-menu a svg { flex-shrink: 0; }
 
 /* ---------------------------------- Layout ---------------------------------- */
 .wrap { max-width: 1180px; margin: 0 auto; padding: 40px 28px 64px; }
@@ -105,6 +111,7 @@ h1, h2, h3 { font-family: "Poppins", ui-sans-serif, sans-serif; letter-spacing: 
 .btn-danger { background: var(--card); color: var(--destructive); border: 1px solid color-mix(in oklch, var(--destructive) 30%, var(--border)); box-shadow: none; }
 .btn-danger:hover { background: color-mix(in oklch, var(--destructive) 8%, var(--card)); }
 .btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+.btn-sm { padding: .42rem .8rem; font-size: .85rem; }
 
 /* ---------------------------------- Cards ---------------------------------- */
 .card { background: var(--card); border: 1px solid var(--border); border-radius: calc(var(--radius) + 4px); padding: 20px; box-shadow: var(--shadow-sm); }
@@ -114,9 +121,10 @@ h1, h2, h3 { font-family: "Poppins", ui-sans-serif, sans-serif; letter-spacing: 
 .project-card .thumb { height: 150px; border-radius: var(--radius); background-size: cover; background-position: center; background-color: var(--muted); margin-bottom: 14px; }
 .muted { color: var(--muted-foreground); font-size: .88rem; }
 
-.pill { display: inline-block; font-size: .72rem; font-weight: 600; padding: .22rem .65rem; border-radius: 50px; }
-.pill-live { background: oklch(0.93 0.06 145); color: oklch(0.42 0.12 150); }
+.pill { display: inline-flex; align-items: center; gap: 4px; font-size: .72rem; font-weight: 600; padding: .22rem .6rem; border-radius: 50px; }
+.pill-live { background: var(--success-soft); color: var(--success); }
 .pill-draft { background: color-mix(in oklch, var(--primary) 15%, var(--card)); color: var(--primary); }
+.chip svg, .pill svg { flex-shrink: 0; opacity: .8; }
 
 .empty { text-align: center; padding: 70px 20px; }
 
@@ -124,16 +132,26 @@ h1, h2, h3 { font-family: "Poppins", ui-sans-serif, sans-serif; letter-spacing: 
 .card-menu-btn { position: absolute; top: 12px; right: 12px; z-index: 2; width: 36px; height: 36px; border-radius: 9px; border: none; background: color-mix(in oklch, var(--card) 88%, transparent); backdrop-filter: blur(4px); color: var(--foreground); font-size: 1.3rem; line-height: 1; cursor: pointer; box-shadow: var(--shadow-sm); transition: .15s; }
 .card-menu-btn:hover { background: var(--card); box-shadow: var(--shadow-md); }
 .card-menu { position: absolute; top: 52px; right: 12px; z-index: 5; background: var(--popover); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-xl); padding: 6px; min-width: 224px; display: flex; flex-direction: column; }
-.card-menu button, .card-menu a { display: block; width: 100%; text-align: left; background: none; border: none; padding: .58rem .75rem; border-radius: 8px; font-size: .9rem; cursor: pointer; color: var(--foreground); text-decoration: none; transition: .12s; }
+.card-menu button, .card-menu a { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; background: none; border: none; padding: .58rem .7rem; border-radius: 8px; font-size: .9rem; cursor: pointer; color: var(--foreground); text-decoration: none; transition: .12s; }
+.card-menu button svg, .card-menu a svg { color: var(--muted-foreground); }
+.card-menu .danger svg { color: var(--destructive); }
 .card-menu button:hover, .card-menu a:hover { background: var(--secondary); }
 .card-menu .danger { color: var(--destructive); }
 .card-menu .danger:hover { background: color-mix(in oklch, var(--destructive) 10%, var(--card)); }
 
 /* --------------------------------- Tabellen --------------------------------- */
 .lead-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
-.lead-table th { background: var(--secondary); color: var(--secondary-foreground); text-align: left; padding: .8rem .95rem; font-size: .82rem; font-weight: 600; }
-.lead-table td { padding: .8rem .95rem; border-bottom: 1px solid var(--border); font-size: .9rem; vertical-align: top; }
-.lead-status { font-size: .82rem; padding: .25rem .5rem; border-radius: 6px; border: 1px solid var(--border); background: var(--card); }
+.lead-table th { background: var(--secondary); color: var(--muted-foreground); text-align: left; padding: .7rem .95rem; font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+.lead-table td { padding: .8rem .95rem; border-bottom: 1px solid var(--border); font-size: .9rem; vertical-align: middle; }
+.lead-table tbody tr:last-child td { border-bottom: none; }
+.lead-table tbody tr { transition: background .12s; }
+.lead-table tbody tr:hover td { background: color-mix(in oklch, var(--secondary) 55%, var(--card)); }
+.lead-status { font-size: .82rem; padding: .3rem .55rem; border-radius: 7px; border: 1px solid var(--border); background: var(--card); cursor: pointer; width: auto; }
+
+/* Editor: eine Gruppe = eine weiße Karte, Sektionen als Zeilen ohne Abstand */
+.section-group { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-sm); margin-bottom: 4px; }
+.section-group .section-row:not(:last-child) { border-bottom: 1px solid var(--border); }
+.section-head:hover { background: var(--secondary) !important; }
 
 /* ---------------------------------- Chips ---------------------------------- */
 .chip { display: inline-flex; align-items: center; gap: 4px; background: var(--secondary); color: var(--secondary-foreground); border-radius: 50px; padding: .2rem .65rem; font-size: .75rem; font-weight: 600; }
